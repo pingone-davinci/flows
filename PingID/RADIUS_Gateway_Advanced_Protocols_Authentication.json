@@ -1,5 +1,5 @@
 {
-  "companyId": "8447d9d4-3f75-4dbc-adf1-d9192d775a99",
+  "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db",
   "authTokenExpireIds": [],
   "connectorIds": [
     "pingOneSSOConnector",
@@ -10,10 +10,10 @@
     "pingOneMfaConnector",
     "annotationConnector"
   ],
-  "createdDate": 1681748688370,
-  "currentVersion": 23,
-  "customerId": "cbedb487563e86ddb94c04fb3d3dae61",
-  "deployedDate": 1681748689811,
+  "createdDate": 1699879166992,
+  "currentVersion": 2,
+  "customerId": "389ebd95c0ba4d084d76122bafc9d7d1",
+  "deployedDate": 1699879170993,
   "description": "Imported on Mon Apr 17 2023 16:19:46 GMT+0000 (Coordinated Universal Time)",
   "flowStatus": "enabled",
   "inputSchemaCompiled": {
@@ -42,19 +42,21 @@
     }
   },
   "isInputSchemaSaved": true,
+  "isOutputSchemaSaved": false,
   "name": "RADIUS Gateway - Advanced Protocols Authentication",
-  "publishedVersion": 23,
+  "publishedVersion": 2,
   "settings": {
     "csp": "worker-src 'self' blob:; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://devsdk.singularkey.com http://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';",
     "intermediateLoadingScreenCSS": "",
     "intermediateLoadingScreenHTML": "",
-    "logLevel": 1,
+    "logLevel": 2,
     "scrubSensitiveInfo": false,
     "useBetaAlgorithm": true
   },
-  "updatedDate": 1681748689812,
-  "flowId": "bc105cd7498483088418b97c30f67446",
-  "versionId": 23,
+  "timeouts": "null",
+  "updatedDate": 1699879170995,
+  "flowId": "983141571af32c0887a10990726403a1",
+  "versionId": 2,
   "graphData": {
     "elements": {
       "nodes": [
@@ -148,9 +150,9 @@
           "data": {
             "id": "hewviuo8v0",
             "nodeType": "CONNECTION",
-            "connectionId": "d5c15e918bf0a68e5b6334e6ae9b70f5",
+            "connectionId": "11007e63e739eb5545cf8293570d6f01",
             "connectorId": "pingOneIntegrationsConnector",
-            "name": "Ping One Integrations [2022-12-07]",
+            "name": "PingOne RADIUS Gateway",
             "label": "PingOne RADIUS Gateway",
             "status": "configured",
             "capabilityName": "radiusResponse",
@@ -311,8 +313,8 @@
             "idUnique": "5vsfbbyezd"
           },
           "position": {
-            "x": 1942.8894699684602,
-            "y": 453.12625157931893
+            "x": 3480,
+            "y": 480
           },
           "group": "nodes",
           "removed": false,
@@ -371,31 +373,6 @@
         },
         {
           "data": {
-            "id": "1bxuc3m3i7",
-            "nodeType": "EVAL",
-            "label": "Evaluator",
-            "properties": {
-              "m3h2zomvkt": {
-                "value": "allTriggersFalse"
-              }
-            },
-            "idUnique": "5achrlxmp5"
-          },
-          "position": {
-            "x": 1580.0337389284218,
-            "y": 453.12625157931893
-          },
-          "group": "nodes",
-          "removed": false,
-          "selected": false,
-          "selectable": true,
-          "locked": false,
-          "grabbable": true,
-          "pannable": false,
-          "classes": ""
-        },
-        {
-          "data": {
             "id": "6k0szcx052",
             "nodeType": "CONNECTION",
             "connectionId": "de650ca45593b82c49064ead10b9fe17",
@@ -419,8 +396,8 @@
             "idUnique": "um1k5ms8b1"
           },
           "position": {
-            "x": 1806.818570828446,
-            "y": 453.12625157931893
+            "x": 3330,
+            "y": 480
           },
           "group": "nodes",
           "removed": false,
@@ -435,9 +412,9 @@
           "data": {
             "id": "753nb83lqd",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -466,9 +443,9 @@
           "data": {
             "id": "ttbvzucwwy",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -497,9 +474,9 @@
           "data": {
             "id": "8urhm99hrx",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -616,9 +593,9 @@
           "data": {
             "id": "oreapxzuhf",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "startNode",
@@ -709,9 +686,9 @@
           "data": {
             "id": "prwt847noj",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -779,9 +756,9 @@
           "data": {
             "id": "fbbtisn650",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -853,9 +830,9 @@
           "data": {
             "id": "nkkedgls8d",
             "nodeType": "CONNECTION",
-            "connectionId": "636fc23e7bb3852d3234379da1be9ef4",
+            "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
             "connectorId": "pingOneMfaConnector",
-            "name": "CT - PingOne MFA",
+            "name": "PingID (new)",
             "label": "PingID",
             "status": "configured",
             "capabilityName": "readDeviceAuthentication",
@@ -887,9 +864,9 @@
           "data": {
             "id": "zu801g7wam",
             "nodeType": "CONNECTION",
-            "connectionId": "d5c15e918bf0a68e5b6334e6ae9b70f5",
+            "connectionId": "11007e63e739eb5545cf8293570d6f01",
             "connectorId": "pingOneIntegrationsConnector",
-            "name": "Ping One Integrations [2022-12-07]",
+            "name": "PingOne RADIUS Gateway",
             "label": "PingOne RADIUS Gateway",
             "status": "configured",
             "idUnique": "a2x124thon",
@@ -984,9 +961,9 @@
           "data": {
             "id": "jlqu48ja7v",
             "nodeType": "CONNECTION",
-            "connectionId": "636fc23e7bb3852d3234379da1be9ef4",
+            "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
             "connectorId": "pingOneMfaConnector",
-            "name": "CT - PingOne MFA",
+            "name": "PingID (new)",
             "label": "PingID",
             "status": "configured",
             "idUnique": "5kvynj1e2j",
@@ -1016,6 +993,9 @@
               },
               "selectedDeviceId": {
                 "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"functions.svg\",\n        \"url\": \"mobileDeviceId\",\n        \"data\": \"{{local.h3fm0ax1sr.payload.output.mobileDeviceId}}\",\n        \"tooltip\": \"{{local.h3fm0ax1sr.payload.output.mobileDeviceId}}\",\n        \"children\": [\n          {\n            \"text\": \"mobileDeviceId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "workforcePolicyMfaPolicyId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"variable.svg\",\n        \"url\": \"p1PolicyID\",\n        \"data\": \"{{global.variables.p1PolicyID}}\",\n        \"tooltip\": \"{{global.variables.p1PolicyID}}\",\n        \"children\": [\n          {\n            \"text\": \"p1PolicyID\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
               }
             }
           },
@@ -1036,9 +1016,9 @@
           "data": {
             "id": "zgn4iwhtzh",
             "nodeType": "CONNECTION",
-            "connectionId": "636fc23e7bb3852d3234379da1be9ef4",
+            "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
             "connectorId": "pingOneMfaConnector",
-            "name": "CT - PingOne MFA",
+            "name": "PingID (new)",
             "label": "PingID",
             "status": "configured",
             "capabilityName": "readAllDevicesPingID",
@@ -1124,9 +1104,9 @@
           "data": {
             "id": "fqhuugy8jy",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "startNode",
@@ -1252,9 +1232,9 @@
           "data": {
             "id": "4v2s2pmxd8",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -1270,8 +1250,8 @@
             "idUnique": "ys41c4sbu3"
           },
           "position": {
-            "x": 2174.4769310910847,
-            "y": 406.6021995195182
+            "x": 3690,
+            "y": 420
           },
           "group": "nodes",
           "removed": false,
@@ -1286,9 +1266,9 @@
           "data": {
             "id": "z6vwljm06v",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -1552,9 +1532,9 @@
           "data": {
             "id": "mzsvk7xnnm",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Teleport",
             "status": "configured",
             "capabilityName": "startNode",
@@ -1605,9 +1585,9 @@
           "data": {
             "id": "ind5tnnqwa",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "startNode",
@@ -1639,9 +1619,9 @@
           "data": {
             "id": "z38t0nl5x9",
             "nodeType": "CONNECTION",
-            "connectionId": "d5c15e918bf0a68e5b6334e6ae9b70f5",
+            "connectionId": "11007e63e739eb5545cf8293570d6f01",
             "connectorId": "pingOneIntegrationsConnector",
-            "name": "Ping One Integrations [2022-12-07]",
+            "name": "PingOne RADIUS Gateway",
             "label": "PingOne RADIUS Gateway",
             "status": "configured",
             "capabilityName": "radiusResponse",
@@ -1679,9 +1659,9 @@
           "data": {
             "id": "s2b3qopbnr",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -1737,9 +1717,9 @@
           "data": {
             "id": "u2pcuaosow",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "startNode",
@@ -1771,9 +1751,9 @@
           "data": {
             "id": "bjlupwi1vs",
             "nodeType": "CONNECTION",
-            "connectionId": "d5c15e918bf0a68e5b6334e6ae9b70f5",
+            "connectionId": "11007e63e739eb5545cf8293570d6f01",
             "connectorId": "pingOneIntegrationsConnector",
-            "name": "Ping One Integrations [2022-12-07]",
+            "name": "PingOne RADIUS Gateway",
             "label": "PingOne RADIUS Gateway",
             "status": "configured",
             "capabilityName": "radiusResponse",
@@ -1986,8 +1966,8 @@
             "idUnique": "bpex9pi0p5"
           },
           "position": {
-            "x": 2004.737239544738,
-            "y": 302.083693630029
+            "x": 3540,
+            "y": 330
           },
           "group": "nodes",
           "removed": false,
@@ -2155,9 +2135,9 @@
           "data": {
             "id": "qszpja8y9q",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "startNode",
@@ -2210,9 +2190,9 @@
           "data": {
             "id": "cswaqb9fw8",
             "nodeType": "CONNECTION",
-            "connectionId": "636fc23e7bb3852d3234379da1be9ef4",
+            "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
             "connectorId": "pingOneMfaConnector",
-            "name": "CT - PingOne MFA",
+            "name": "PingID (new)",
             "label": "PingID",
             "status": "configured",
             "idUnique": "wqao15p8op",
@@ -2243,6 +2223,9 @@
               },
               "selectedDeviceOtp": {
                 "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"functions.svg\",\n        \"url\": \"otp\",\n        \"data\": \"{{local.633phdxqyt.payload.output.otp}}\",\n        \"tooltip\": \"{{local.633phdxqyt.payload.output.otp}}\",\n        \"children\": [\n          {\n            \"text\": \"otp\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "workforcePolicyMfaPolicyId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"variable.svg\",\n        \"url\": \"p1PolicyID\",\n        \"data\": \"{{global.variables.p1PolicyID}}\",\n        \"tooltip\": \"{{global.variables.p1PolicyID}}\",\n        \"children\": [\n          {\n            \"text\": \"p1PolicyID\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
               }
             }
           },
@@ -2387,9 +2370,9 @@
           "data": {
             "id": "qd1rzvkx28",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -2418,9 +2401,9 @@
           "data": {
             "id": "kq8p7txt08",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -2473,9 +2456,9 @@
           "data": {
             "id": "1r9q2j27vx",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -2504,9 +2487,9 @@
           "data": {
             "id": "pqoo9xb79k",
             "nodeType": "CONNECTION",
-            "connectionId": "97a3fe2be39181b39901900c1738accc",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
             "connectorId": "nodeConnector",
-            "name": "Node [2022-12-02]",
+            "name": "Teleport",
             "label": "Node [2022-10-27]",
             "status": "configured",
             "capabilityName": "goToNode",
@@ -2519,8 +2502,8 @@
             "idUnique": "j35ou9fav9"
           },
           "position": {
-            "x": 2174.4769310910847,
-            "y": 542.1362660260243
+            "x": 3690,
+            "y": 570
           },
           "group": "nodes",
           "removed": false,
@@ -2602,7 +2585,7 @@
                 "value": "#000000"
               },
               "annotation": {
-                "value": "PingOne RADIUS Gateway - Advanced Protocols Authentication Flow                                                                                                                                                                                                  Created by: Ping Identity                                                           Version: 1.0                                                                           Release Date: April 17, 2023                                    Documentation: https://support.pingidentity.com/s/marketplace-integration/a7iDo0000004OSQIA2/radius-gateway-advanced-protocols-authentication"
+                "value": "PingOne RADIUS Gateway - Advanced Protocols Authentication Flow                                                                                                                                                                                                  Created by: Ping Identity                                                           Version: 1.1                                                                           Release Date: November 13, 2023                                    Documentation: https://support.pingidentity.com/s/marketplace-integration/a7iDo0000004OSQIA2/radius-gateway-advanced-protocols-authentication"
               },
               "strokeEnabled": {
                 "value": true
@@ -2640,9 +2623,583 @@
           "grabbable": true,
           "pannable": false,
           "classes": ""
+        },
+        {
+          "data": {
+            "id": "eaosn6a8ls",
+            "nodeType": "CONNECTION",
+            "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+            "connectorId": "pingOneMfaConnector",
+            "name": "PingID (new)",
+            "label": "PingOne MFA",
+            "status": "configured",
+            "capabilityName": "evalPolicyPingID",
+            "type": "action",
+            "properties": {
+              "userId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"id\",\n        \"data\": \"{{local.s5ovz9sye5.payload.output.user.id}}\",\n        \"tooltip\": \"{{local.s5ovz9sye5.payload.output.user.id}}\",\n        \"children\": [\n          {\n            \"text\": \"id\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "policyFactsIp": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"ip\",\n        \"data\": \"{{global.parameters.ip}}\",\n        \"tooltip\": \"{{global.parameters.ip}}\",\n        \"children\": [\n          {\n            \"text\": \"ip\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "policyFactsUserAgent": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"userAgent\",\n        \"data\": \"{{global.userAgent}}\",\n        \"tooltip\": \"{{global.userAgent}}\",\n        \"children\": [\n          {\n            \"text\": \"userAgent\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "policyFactsApplicationId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "policyFactsGroups": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"groupMemberships\",\n        \"data\": \"{{local.0c14lqqo80.payload.output.groupMemberships}}\",\n        \"tooltip\": \"{{local.0c14lqqo80.payload.output.groupMemberships}}\",\n        \"children\": [\n          {\n            \"text\": \"groupMemberships\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "policyFactsApplicationName": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"RADIUS Gateway\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "lastMFATransaction": {},
+              "policyRecentPingOneCookie": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "idUnique": "j948h5u8ip"
+          },
+          "position": {
+            "x": 2160,
+            "y": 450
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "g7ksawukq6",
+            "nodeType": "EVAL",
+            "properties": {
+              "undefined": {
+                "value": "allTriggersFalse"
+              },
+              "ejioxjdukb": {
+                "value": "allTriggersTrue"
+              },
+              "a5tdx4j3rj": {
+                "value": "allTriggersFalse"
+              }
+            },
+            "idUnique": "98qptvm8vx"
+          },
+          "position": {
+            "x": 2310,
+            "y": 450
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ejioxjdukb",
+            "nodeType": "CONNECTION",
+            "connectionId": "de650ca45593b82c49064ead10b9fe17",
+            "connectorId": "functionsConnector",
+            "name": "Functions",
+            "label": "Functions",
+            "status": "configured",
+            "capabilityName": "AEqualsMultipleB",
+            "type": "trigger",
+            "properties": {
+              "leftValueA": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"action\",\n        \"data\": \"{{local.eaosn6a8ls.payload.output.rawResponse.action}}\",\n        \"tooltip\": \"{{local.eaosn6a8ls.payload.output.rawResponse.action}}\",\n        \"children\": [\n          {\n            \"text\": \"action\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "rightValueB": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"0\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Evaluate policy status"
+              },
+              "rightValueMultiple": {
+                "value": [
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"AUTHENTICATE\"\n      }\n    ]\n  }\n]",
+                    "id": "50k36d0i08"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"BYPASS_MFA\"\n      }\n    ]\n  }\n]",
+                    "id": "7ogxwjv2i6"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"DENY\"\n      }\n    ]\n  }\n]",
+                    "id": "ucnq98w7zy"
+                  }
+                ]
+              }
+            },
+            "idUnique": "dbj9s02619"
+          },
+          "position": {
+            "x": 2610,
+            "y": 450
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0c14lqqo80",
+            "nodeType": "CONNECTION",
+            "connectionId": "94141bf2f1b9b59a5f5365ff135e02bb",
+            "connectorId": "pingOneSSOConnector",
+            "name": "PingOne",
+            "label": "PingOne",
+            "status": "configured",
+            "capabilityName": "readUserGroupMemberships",
+            "type": "action",
+            "properties": {
+              "identifier": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"id\",\n        \"data\": \"{{local.s5ovz9sye5.payload.output.user.id}}\",\n        \"tooltip\": \"{{local.s5ovz9sye5.payload.output.user.id}}\",\n        \"children\": [\n          {\n            \"text\": \"id\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1800,
+            "y": 450
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "hi38fuf3wj",
+            "nodeType": "EVAL",
+            "properties": {
+              "eaosn6a8ls": {
+                "value": "allTriggersTrue"
+              },
+              "undefined": {
+                "value": "allTriggersFalse"
+              },
+              "g6v1v7rwcq": {
+                "value": "allTriggersFalse"
+              }
+            }
+          },
+          "position": {
+            "x": 1980,
+            "y": 450
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "z3x7j0z2i6",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 2790,
+            "y": 480
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "vevpl097h6",
+            "nodeType": "CONNECTION",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+            "connectorId": "nodeConnector",
+            "name": "Teleport",
+            "label": "Teleport",
+            "status": "configured",
+            "capabilityName": "goToNode",
+            "type": "action",
+            "properties": {
+              "nodeInstanceId": {
+                "value": "ind5tnnqwa"
+              }
+            }
+          },
+          "position": {
+            "x": 2940,
+            "y": 660
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "607n1x3rzi",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 2790,
+            "y": 570
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "xckfq1hddf",
+            "nodeType": "CONNECTION",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+            "connectorId": "nodeConnector",
+            "name": "Teleport",
+            "label": "Teleport",
+            "status": "configured",
+            "capabilityName": "goToNode",
+            "type": "action",
+            "properties": {
+              "nodeInstanceId": {
+                "value": "u2pcuaosow"
+              }
+            }
+          },
+          "position": {
+            "x": 2940,
+            "y": 780
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "img62fnq22",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 2790,
+            "y": 690
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "7rca70ca1n",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 2790,
+            "y": 690
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "a5tdx4j3rj",
+            "nodeType": "CONNECTION",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+            "connectorId": "nodeConnector",
+            "name": "Teleport",
+            "label": "Teleport",
+            "status": "configured",
+            "capabilityName": "goToNode",
+            "type": "action",
+            "properties": {
+              "nodeInstanceId": {
+                "value": "mzsvk7xnnm"
+              }
+            },
+            "idUnique": "0aztupdyvp"
+          },
+          "position": {
+            "x": 2430,
+            "y": 660
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "f5smtjnym4",
+            "nodeType": "CONNECTION",
+            "connectionId": "06922a684039827499bdbdd97f49827b",
+            "connectorId": "variablesConnector",
+            "name": "Variables",
+            "label": "Variables",
+            "status": "configured",
+            "idUnique": "jnrjs0v5hx",
+            "capabilityName": "saveValue",
+            "type": "trigger",
+            "properties": {
+              "saveVariables": {
+                "value": [
+                  {
+                    "name": "p1PolicyID",
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"id\",\n        \"data\": \"{{local.eaosn6a8ls.payload.output.rawResponse.id}}\",\n        \"tooltip\": \"{{local.eaosn6a8ls.payload.output.rawResponse.id}}\",\n        \"children\": [\n          {\n            \"text\": \"id\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]",
+                    "key": 0.724497499274126,
+                    "label": "p1PolicyID (string - flowInstance)",
+                    "type": "string",
+                    "nameDefault": "id"
+                  }
+                ]
+              },
+              "nodeTitle": {
+                "value": "PolicyID update"
+              }
+            }
+          },
+          "position": {
+            "x": 2940,
+            "y": 480
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "uhpx87rsna",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1590,
+            "y": 450
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "y2t41wczdd",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 3090,
+            "y": 480
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "k72ir9jr8m",
+            "nodeType": "ANNOTATION",
+            "name": "Annotation",
+            "connectionId": "921bfae85c38ed45045e07be703d86b8",
+            "connectorId": "annotationConnector",
+            "capabilityName": "updateAnnotationProperties",
+            "type": "action",
+            "properties": {
+              "backgroundColor": {
+                "value": "#e4e6e9ff"
+              },
+              "annotationTextColor": {
+                "value": "#000000"
+              },
+              "annotation": {
+                "value": "Evaluate Policy"
+              },
+              "strokeEnabled": {
+                "value": true
+              },
+              "strokeWidth": {
+                "value": 1
+              },
+              "cornerRadius": {
+                "value": 8
+              },
+              "fontFamily": {
+                "value": "sans-serif"
+              },
+              "fontSize": {
+                "value": 14
+              }
+            },
+            "status": "configured",
+            "idUnique": "7ls9yecu21"
+          },
+          "position": {
+            "x": 2070,
+            "y": 330
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "g6v1v7rwcq",
+            "nodeType": "CONNECTION",
+            "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+            "connectorId": "nodeConnector",
+            "name": "Teleport",
+            "label": "Teleport",
+            "status": "configured",
+            "capabilityName": "goToNode",
+            "type": "action",
+            "properties": {
+              "nodeInstanceId": {
+                "value": "mzsvk7xnnm"
+              }
+            },
+            "idUnique": "grcvhghmdd"
+          },
+          "position": {
+            "x": 2130,
+            "y": 660
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
         }
       ],
       "edges": [
+        {
+          "data": {
+            "id": "5i1u10vk73",
+            "source": "y2t41wczdd",
+            "target": "6k0szcx052"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "okwl4d6n84",
+            "source": "uhpx87rsna",
+            "target": "0c14lqqo80"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "v3annh49xg",
+            "source": "ejioxjdukb",
+            "target": "img62fnq22",
+            "multiValueSourceId": "ucnq98w7zy"
+          },
+          "position": {
+            "x": 64,
+            "y": 132
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
         {
           "data": {
             "id": "wwp28a0t73",
@@ -3464,9 +4021,9 @@
         },
         {
           "data": {
-            "id": "0n2u3fm1cw",
-            "source": "f4w8wq6cu1",
-            "target": "1bxuc3m3i7"
+            "id": "mp6kefnb2l",
+            "source": "img62fnq22",
+            "target": "xckfq1hddf"
           },
           "position": {
             "x": 0,
@@ -3578,9 +4135,9 @@
         },
         {
           "data": {
-            "id": "qcc7mf6fng",
-            "source": "1bxuc3m3i7",
-            "target": "6k0szcx052"
+            "id": "0noo465y8n",
+            "source": "z3x7j0z2i6",
+            "target": "f5smtjnym4"
           },
           "position": {
             "x": 0,
@@ -3747,6 +4304,256 @@
           "grabbable": true,
           "pannable": true,
           "classes": ""
+        },
+        {
+          "data": {
+            "id": "prvpfbvxr8",
+            "source": "g7ksawukq6",
+            "target": "a5tdx4j3rj"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zuhrksy9gt",
+            "source": "ejioxjdukb",
+            "target": "7rca70ca1n",
+            "multiValueSourceId": "-1"
+          },
+          "position": {
+            "x": 64,
+            "y": 172
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0krbsz5dox",
+            "source": "7rca70ca1n",
+            "target": "xckfq1hddf"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "14y3udifil",
+            "source": "ejioxjdukb",
+            "target": "z3x7j0z2i6",
+            "multiValueSourceId": "50k36d0i08"
+          },
+          "position": {
+            "x": 64,
+            "y": 52
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "j2xn7ydf1b",
+            "source": "hi38fuf3wj",
+            "target": "eaosn6a8ls"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "dtkmavjwdt",
+            "source": "0c14lqqo80",
+            "target": "hi38fuf3wj"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "wpugp9d0fg",
+            "source": "eaosn6a8ls",
+            "target": "g7ksawukq6"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "pfk3qvbn72",
+            "source": "g7ksawukq6",
+            "target": "ejioxjdukb"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zx3l3zuwen",
+            "source": "hi38fuf3wj",
+            "target": "g6v1v7rwcq"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "hpi5rt69ch",
+            "source": "f5smtjnym4",
+            "target": "y2t41wczdd"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "lp6unsvyz8",
+            "source": "ejioxjdukb",
+            "target": "607n1x3rzi",
+            "multiValueSourceId": "7ogxwjv2i6"
+          },
+          "position": {
+            "x": 64,
+            "y": 92
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zt7n7uqwyj",
+            "source": "607n1x3rzi",
+            "target": "vevpl097h6"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "hvzvo1qa19",
+            "source": "f4w8wq6cu1",
+            "target": "uhpx87rsna"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
         }
       ]
     },
@@ -3785,11 +4592,11 @@
     }
   ],
   "flowColor": "#E3F0FF",
-  "savedDate": 1681748688214,
+  "savedDate": 1699879165806,
   "variables": [
     {
       "context": "flowInstance",
-      "createdDate": 1681745748520,
+      "createdDate": 1677076330702,
       "fields": {
         "type": "string",
         "displayName": "",
@@ -3800,11 +4607,11 @@
       "type": "property",
       "visibility": "private",
       "name": "OTP_SEPARATOR##SK##flowInstance",
-      "companyId": "8447d9d4-3f75-4dbc-adf1-d9192d775a99"
+      "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
     },
     {
       "context": "flowInstance",
-      "createdDate": 1670427336306,
+      "createdDate": 1672402978223,
       "fields": {
         "type": "string",
         "displayName": "",
@@ -3814,7 +4621,22 @@
       "type": "property",
       "visibility": "private",
       "name": "STATUS##SK##flowInstance",
-      "companyId": "8447d9d4-3f75-4dbc-adf1-d9192d775a99"
+      "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+    },
+    {
+      "context": "flowInstance",
+      "createdDate": 1699879132886,
+      "fields": {
+        "type": "string",
+        "displayName": "",
+        "mutable": true,
+        "min": 0,
+        "max": 2000
+      },
+      "type": "property",
+      "visibility": "private",
+      "name": "p1PolicyID##SK##flowInstance",
+      "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
     }
   ],
   "connections": []
