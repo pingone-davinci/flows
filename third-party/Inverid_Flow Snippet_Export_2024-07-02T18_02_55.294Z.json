@@ -1,0 +1,1163 @@
+{
+  "companyId": "bd0ed7cb-f317-48c1-80ef-52874dfde60e",
+  "authTokenExpireIds": [],
+  "connectorIds": [
+    "inveridConnector",
+    "httpConnector",
+    "challengeConnector",
+    "functionsConnector"
+  ],
+  "createdDate": 1709321092290,
+  "currentVersion": 20,
+  "customerId": "fcc3845bad16d56f913019a8ca453ebe",
+  "deployedDate": 1709324329275,
+  "description": "Cloned on Fri Mar 01 2024 18:50:57 GMT+0000 (Coordinated Universal Time). \n",
+  "flowStatus": "enabled",
+  "isOutputSchemaSaved": false,
+  "name": "Inverid Flow Snippet",
+  "publishedVersion": 20,
+  "settings": {
+    "csp": "worker-src 'self' blob:; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://devsdk.singularkey.com http://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';",
+    "intermediateLoadingScreenCSS": "",
+    "intermediateLoadingScreenHTML": "",
+    "logLevel": 3
+  },
+  "timeouts": "null",
+  "updatedDate": 1709324329329,
+  "flowId": "824fb37cd979e4eaa4ae5b9bf6bfa004",
+  "versionId": 20,
+  "graphData": {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "zu51suz3xc",
+            "nodeType": "CONNECTION",
+            "connectionId": "76ac95a009789fca00f74f4c721c419f",
+            "connectorId": "inveridConnector",
+            "name": "ReadID by Inverid",
+            "label": "ReadID by Inverid",
+            "status": "configured",
+            "capabilityName": "generateActivationUrl",
+            "properties": {},
+            "idUnique": "vv45a530om",
+            "type": "action"
+          },
+          "position": {
+            "x": 577,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "c6voclgv4e",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "showContinueButton": {
+                "value": true
+              },
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Start\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Start"
+              }
+            },
+            "idUnique": "co3fmz6xws"
+          },
+          "position": {
+            "x": 277,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "khmigl5sec",
+            "nodeType": "EVAL",
+            "idUnique": "jdvpf7j60s"
+          },
+          "position": {
+            "x": 382,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ctmztfba2w",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "tmfgtxrs96"
+          },
+          "position": {
+            "x": 704,
+            "y": 236.25
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "3pniusrjnv",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "createQr",
+            "type": "action",
+            "properties": {
+              "customUrl": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"inverid.svg\",\n        \"url\": \"activationEndpoint\",\n        \"data\": \"{{local.zu51suz3xc.payload.output.activationEndpoint}}\",\n        \"tooltip\": \"{{local.zu51suz3xc.payload.output.activationEndpoint}}\",\n        \"children\": [\n          {\n            \"text\": \"activationEndpoint\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Generate QR Code"
+              }
+            },
+            "idUnique": "fryb0ypthm"
+          },
+          "position": {
+            "x": 877,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "6q850h8o9v",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "l09qwmdtlb"
+          },
+          "position": {
+            "x": 1015,
+            "y": 238.75
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "kjnyn3i9b6",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHTMLTemplate",
+            "type": "trigger",
+            "properties": {
+              "customHTML": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"<img src=\\\"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"url:3pniusrjnv\",\n        \"url\": \"generatedQr\",\n        \"data\": \"{{local.3pniusrjnv.payload.output.generatedQr}}\",\n        \"tooltip\": \"{{local.3pniusrjnv.payload.output.generatedQr}}\",\n        \"children\": [\n          {\n            \"text\": \"{{local.3pniusrjnv.payload.output.generatedQr}}\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\\\">\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"-----------------\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"skpolling\",\n        \"data\": \"[[[skcomponent###c2tjb21wb25lbnQgInNrcG9sbGluZyIgIGNsYXNzPSIiIHBvbGxJbnRlcnZhbD0iMjAwMCIgcG9sbFJldHJpZXM9IjYwIiBwb2xsQ2hhbGxlbmdlU3RhdHVzPSJ0cnVlIg==###eyJuYW1lIjoic2twb2xsaW5nIiwib3B0aW9ucyI6eyJjbGFzcyI6IiIsInBvbGxJbnRlcnZhbCI6MjAwMCwicG9sbFJldHJpZXMiOjYwLCJwb2xsQ2hhbGxlbmdlU3RhdHVzIjoidHJ1ZSJ9LCJjb21wb25lbnRQcm9wcyI6eyJjbGFzcyI6eyJuYW1lIjoiY2xhc3MiLCJkaXNwbGF5TmFtZSI6IkNTUyBDbGFzcyJ9LCJwb2xsSW50ZXJ2YWwiOnsibmFtZSI6InBvbGxJbnRlcnZhbCIsImRpc3BsYXlOYW1lIjoiUG9sbCBJbnRlcnZhbCIsInZhbHVlIjoyMDAwfSwicG9sbFJldHJpZXMiOnsibmFtZSI6InBvbGxSZXRyaWVzIiwiZGlzcGxheU5hbWUiOiJQb2xsIFJldHJpZXMiLCJ2YWx1ZSI6NjB9LCJwb2xsQ2hhbGxlbmdlU3RhdHVzIjp7Im5hbWUiOiJwb2xsQ2hhbGxlbmdlU3RhdHVzIiwiZGlzcGxheU5hbWUiOiJQb2xsIENoYWxsZW5nZSBTdGF0dXMiLCJ0eXBlIjoic2VsZWN0IiwidmFsdWUiOiJ0cnVlIiwib3B0aW9ucyI6W3sibmFtZSI6IlRydWUiLCJ2YWx1ZSI6InRydWUifSx7Im5hbWUiOiJGYWxzZSIsInZhbHVlIjoiZmFsc2UifV19fX0=]]]\",\n        \"tooltip\": \"{{component.skpolling}}\",\n        \"children\": [\n          {\n            \"text\": \"skpolling\"\n          }\n        ],\n        \"component\": \"skpolling\",\n        \"options\": {\n          \"class\": \"\",\n          \"pollInterval\": 2000,\n          \"pollRetries\": 60,\n          \"pollChallengeStatus\": \"true\"\n        },\n        \"componentProps\": {\n          \"class\": {\n            \"name\": \"class\",\n            \"displayName\": \"CSS Class\"\n          },\n          \"pollInterval\": {\n            \"name\": \"pollInterval\",\n            \"displayName\": \"Poll Interval\",\n            \"value\": 2000\n          },\n          \"pollRetries\": {\n            \"name\": \"pollRetries\",\n            \"displayName\": \"Poll Retries\",\n            \"value\": 60\n          },\n          \"pollChallengeStatus\": {\n            \"name\": \"pollChallengeStatus\",\n            \"displayName\": \"Poll Challenge Status\",\n            \"type\": \"select\",\n            \"value\": \"true\",\n            \"options\": [\n              {\n                \"name\": \"True\",\n                \"value\": \"true\"\n              },\n              {\n                \"name\": \"False\",\n                \"value\": \"false\"\n              }\n            ]\n          }\n        }\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Display QR Code"
+              },
+              "challenge": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"challengeId\",\n        \"data\": \"{{local.zu51suz3xc.payload.output.challengeId}}\",\n        \"tooltip\": \"{{local.zu51suz3xc.payload.output.challengeId}}\",\n        \"children\": [\n          {\n            \"text\": \"challengeId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "idUnique": "qfruaxxn9f"
+          },
+          "position": {
+            "x": 1153,
+            "y": 241.5
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "8abnckbhey",
+            "nodeType": "CONNECTION",
+            "connectionId": "76ac95a009789fca00f74f4c721c419f",
+            "connectorId": "inveridConnector",
+            "name": "ReadID by Inverid",
+            "label": "ReadID by Inverid",
+            "status": "configured",
+            "capabilityName": "webhook",
+            "properties": {},
+            "idUnique": "zlp5yqaslq"
+          },
+          "position": {
+            "x": 570,
+            "y": 390
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0t7gddhotz",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "s9c2boj122"
+          },
+          "position": {
+            "x": 1278,
+            "y": 241
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "8i4qna18h5",
+            "nodeType": "CONNECTION",
+            "connectionId": "76ac95a009789fca00f74f4c721c419f",
+            "connectorId": "inveridConnector",
+            "name": "ReadID by Inverid",
+            "label": "ReadID by Inverid",
+            "status": "configured",
+            "capabilityName": "generateResult",
+            "properties": {
+              "sessionId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"moustache\",\n        \"data\": \"{{local.b3syjvwhvd.payload.output.details.sessionId}}\",\n        \"name\": \"sessionId\",\n        \"children\": [\n          {\n            \"text\": \"\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "idUnique": "8o9n1gsa4y"
+          },
+          "position": {
+            "x": 1920,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "tchgj5u33o",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "c4zed09g41"
+          },
+          "position": {
+            "x": 2040,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "gquegsfhtj",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"url:8i4qna18h5\",\n        \"url\": \"output\",\n        \"data\": \"{{local.8i4qna18h5.payload.output}}\",\n        \"tooltip\": \"{{local.8i4qna18h5.payload.output}}\",\n        \"children\": [\n          {\n            \"text\": \"{{local.8i4qna18h5.payload.output}}\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Result Output"
+              },
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Output\"\n      }\n    ]\n  }\n]"
+              },
+              "showContinueButton": {
+                "value": true
+              }
+            },
+            "idUnique": "8xvpwc2nc1"
+          },
+          "position": {
+            "x": 2160,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "b3syjvwhvd",
+            "nodeType": "CONNECTION",
+            "connectionId": "94cb18cc8ee6ddaf28e881b16637aec6",
+            "connectorId": "challengeConnector",
+            "name": "Challenge",
+            "label": "Challenge",
+            "status": "configured",
+            "capabilityName": "getChallenge",
+            "type": "action",
+            "properties": {
+              "challenge": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"challengeId\",\n        \"data\": \"{{local.zu51suz3xc.payload.output.challengeId}}\",\n        \"tooltip\": \"{{local.zu51suz3xc.payload.output.challengeId}}\",\n        \"children\": [\n          {\n            \"text\": \"challengeId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "idUnique": "1lts7dkg30"
+          },
+          "position": {
+            "x": 1430,
+            "y": 243.5
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "1cyg35vita",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "8pjaiescag"
+          },
+          "position": {
+            "x": 1539,
+            "y": 243
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "y7gr6rx9yw",
+            "nodeType": "CONNECTION",
+            "connectionId": "de650ca45593b82c49064ead10b9fe17",
+            "connectorId": "functionsConnector",
+            "name": "Functions",
+            "label": "Functions",
+            "status": "configured",
+            "capabilityName": "AEqualsMultipleB",
+            "type": "trigger",
+            "properties": {
+              "leftValueA": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"challenge.svg\",\n        \"url\": \"challengeStatus\",\n        \"data\": \"{{local.b3syjvwhvd.payload.output.challengeStatus}}\",\n        \"tooltip\": \"{{local.b3syjvwhvd.payload.output.challengeStatus}}\",\n        \"children\": [\n          {\n            \"text\": \"challengeStatus\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "rightValueMultiple": {
+                "value": [
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"approved\"\n      }\n    ]\n  }\n]",
+                    "id": "3rkhg5lx79"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"denied\"\n      }\n    ]\n  }\n]",
+                    "id": "4xnx27wox5"
+                  }
+                ]
+              }
+            },
+            "idUnique": "826drthlil"
+          },
+          "position": {
+            "x": 1657,
+            "y": 242.5
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "09k4y2x1sg",
+            "nodeType": "EVAL",
+            "idUnique": "aezesa9181"
+          },
+          "position": {
+            "x": 1788.5,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "78m1btv1v1",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "c19gxyhmz7"
+          },
+          "position": {
+            "x": 1776.5,
+            "y": 386.5
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "p5vdgmbxuy",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Denied!\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "idUnique": "rpftk0z1sf"
+          },
+          "position": {
+            "x": 1920,
+            "y": 390
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "dezqglqbda",
+            "nodeType": "EVAL",
+            "label": "Evaluator",
+            "idUnique": "043rig8ydn"
+          },
+          "position": {
+            "x": 705.5,
+            "y": 389.25
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "b0oa0jtyka",
+            "nodeType": "CONNECTION",
+            "connectionId": "94cb18cc8ee6ddaf28e881b16637aec6",
+            "connectorId": "challengeConnector",
+            "name": "Challenge",
+            "label": "Challenge",
+            "status": "configured",
+            "capabilityName": "updateChallenge",
+            "type": "action",
+            "properties": {
+              "challenge": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"challenge\",\n        \"data\": \"{{local.8abnckbhey.payload.output.challenge}}\",\n        \"tooltip\": \"{{local.8abnckbhey.payload.output.challenge}}\",\n        \"children\": [\n          {\n            \"text\": \"challenge\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "challengeStatus": {
+                "value": "approved"
+              },
+              "claimsNameValuePairs": {
+                "value": [
+                  {
+                    "name": "sessionId",
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"sessionId\",\n        \"data\": \"{{local.8abnckbhey.payload.output.sessionId}}\",\n        \"tooltip\": \"{{local.8abnckbhey.payload.output.sessionId}}\",\n        \"children\": [\n          {\n            \"text\": \"sessionId\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]",
+                    "key": 0.9602992955221332,
+                    "label": "sessionId (string - flowInstance)",
+                    "type": "string",
+                    "nameDefault": "sessionId"
+                  }
+                ]
+              },
+              "isChallengeComplete": {
+                "value": true
+              },
+              "updatedByFlowId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"davinci\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "idUnique": "6qho8lisy2"
+          },
+          "position": {
+            "x": 870,
+            "y": 390
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "xqorgyu1av",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 2283,
+            "y": 240.75
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "y3yiq52f2t",
+            "nodeType": "CONNECTION",
+            "connectionId": "76ac95a009789fca00f74f4c721c419f",
+            "connectorId": "inveridConnector",
+            "name": "ReadID by Inverid",
+            "label": "ReadID by Inverid",
+            "status": "configured",
+            "capabilityName": "generateFaceImage",
+            "type": "action",
+            "properties": {
+              "sessionId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"moustache\",\n        \"data\": \"{{local.b3syjvwhvd.payload.output.details.sessionId}}\",\n        \"name\": \"sessionId\",\n        \"children\": [\n          {\n            \"text\": \"\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 2406,
+            "y": 241.5
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0qu2nrthbn",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 2537.5,
+            "y": 243
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "5814lnu9yc",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHTMLTemplate",
+            "type": "trigger",
+            "properties": {
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"<img src =\\\"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"inverid.svg\",\n        \"url\": \"image\",\n        \"data\": \"{{local.y3yiq52f2t.payload.output.image}}\",\n        \"tooltip\": \"{{local.y3yiq52f2t.payload.output.image}}\",\n        \"children\": [\n          {\n            \"text\": \"image\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\\\"/>\"\n      }\n    ]\n  }\n]"
+              },
+              "customHTML": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"<img src =\\\"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"inverid.svg\",\n        \"url\": \"image\",\n        \"data\": \"{{local.y3yiq52f2t.payload.output.image}}\",\n        \"tooltip\": \"{{local.y3yiq52f2t.payload.output.image}}\",\n        \"children\": [\n          {\n            \"text\": \"image\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\\\"/>\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 2669,
+            "y": 244.5
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "qpt9slhzji",
+            "source": "6q850h8o9v",
+            "target": "kjnyn3i9b6"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "3xgcy3ze0z",
+            "source": "c6voclgv4e",
+            "target": "khmigl5sec"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "xp9sycq50v",
+            "source": "khmigl5sec",
+            "target": "zu51suz3xc"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "nfg7vk61vd",
+            "source": "zu51suz3xc",
+            "target": "ctmztfba2w"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0eoq9n0tpl",
+            "source": "ctmztfba2w",
+            "target": "3pniusrjnv"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ztd8ras9s8",
+            "source": "3pniusrjnv",
+            "target": "6q850h8o9v"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "hz78tomv1h",
+            "source": "khmigl5sec",
+            "target": "8abnckbhey"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "668wa1xxj7",
+            "source": "kjnyn3i9b6",
+            "target": "0t7gddhotz"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "h4ige6z9in",
+            "source": "tchgj5u33o",
+            "target": "gquegsfhtj"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "otx3325dgx",
+            "source": "8i4qna18h5",
+            "target": "tchgj5u33o"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "hh6eluu95k",
+            "source": "0t7gddhotz",
+            "target": "b3syjvwhvd"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "mhciq4ia2b",
+            "source": "b3syjvwhvd",
+            "target": "1cyg35vita"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "pdhjaofk0w",
+            "source": "1cyg35vita",
+            "target": "y7gr6rx9yw"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "834w85vmei",
+            "source": "y7gr6rx9yw",
+            "target": "09k4y2x1sg",
+            "multiValueSourceId": "3rkhg5lx79"
+          },
+          "position": {
+            "x": 64,
+            "y": 52
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "1ymf2mrh3y",
+            "source": "09k4y2x1sg",
+            "target": "8i4qna18h5"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "pjx2dp6sc8",
+            "source": "y7gr6rx9yw",
+            "target": "78m1btv1v1",
+            "multiValueSourceId": "4xnx27wox5"
+          },
+          "position": {
+            "x": 64,
+            "y": 92
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "fb583473jh",
+            "source": "78m1btv1v1",
+            "target": "p5vdgmbxuy"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "2d9d10zf91",
+            "source": "8abnckbhey",
+            "target": "dezqglqbda"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "59pvsu5rv2",
+            "source": "dezqglqbda",
+            "target": "b0oa0jtyka"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "gxoq9x9vpv",
+            "source": "gquegsfhtj",
+            "target": "xqorgyu1av"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "gpwrlskbq7",
+            "source": "xqorgyu1av",
+            "target": "y3yiq52f2t"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "qdzojttfp2",
+            "source": "y3yiq52f2t",
+            "target": "0qu2nrthbn"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ohcaw8lhb1",
+            "source": "0qu2nrthbn",
+            "target": "5814lnu9yc"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        }
+      ]
+    },
+    "data": {},
+    "zoomingEnabled": true,
+    "userZoomingEnabled": true,
+    "zoom": 1,
+    "minZoom": 1e-50,
+    "maxZoom": 1e+50,
+    "panningEnabled": true,
+    "userPanningEnabled": true,
+    "pan": {
+      "x": 0,
+      "y": 0
+    },
+    "boxSelectionEnabled": true,
+    "renderer": {
+      "name": "null"
+    }
+  },
+  "flowColor": "#AFD5FF",
+  "savedDate": 1709321092169,
+  "variables": [],
+  "connections": []
+}
