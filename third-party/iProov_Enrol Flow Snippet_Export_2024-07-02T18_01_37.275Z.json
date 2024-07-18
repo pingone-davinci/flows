@@ -1,0 +1,613 @@
+{
+  "companyId": "bd0ed7cb-f317-48c1-80ef-52874dfde60e",
+  "authTokenExpireIds": [],
+  "connectorIds": [
+    "iproovV2Connector",
+    "httpConnector",
+    "functionsConnector",
+    "errorConnector"
+  ],
+  "createdDate": 1719943292908,
+  "currentVersion": 14,
+  "customerId": "fcc3845bad16d56f913019a8ca453ebe",
+  "deployedDate": 1719943293902,
+  "description": "Imported on Tue May 28 2024 21:30:44 GMT+0000 (Coordinated Universal Time)",
+  "flowStatus": "enabled",
+  "isOutputSchemaSaved": false,
+  "name": "iProov Enrol Flow Snippet",
+  "publishedVersion": 14,
+  "timeouts": "null",
+  "updatedDate": 1719943293910,
+  "flowId": "27fe850bbdfb94c56d17d23f93c7e885",
+  "versionId": 14,
+  "graphData": {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "4k4ff1x9fs",
+            "nodeType": "CONNECTION",
+            "connectionId": "2850075bafff7b560ed9ceb9e3050da6",
+            "connectorId": "iproovV2Connector",
+            "name": "iProov",
+            "label": "iProov",
+            "status": "configured",
+            "capabilityName": "enrolToken",
+            "type": "action",
+            "properties": {
+              "resource": {
+                "value": "onboarding"
+              },
+              "userId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"81a22a82-dc71-412d-9e60-521a7a6388a8\"\n      }\n    ]\n  }\n]"
+              },
+              "riskProfile": {
+                "value": "Low"
+              }
+            }
+          },
+          "position": {
+            "x": 277,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "1up2cvm9l8",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 389,
+            "y": 236.75
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "fg6veqq5ej",
+            "nodeType": "CONNECTION",
+            "connectionId": "2850075bafff7b560ed9ceb9e3050da6",
+            "connectorId": "iproovV2Connector",
+            "name": "iProov",
+            "label": "iProov",
+            "status": "configured",
+            "capabilityName": "validateEnrol",
+            "type": "action",
+            "properties": {
+              "userId": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"81a22a82-dc71-412d-9e60-521a7a6388a8\"\n      }\n    ]\n  }\n]"
+              },
+              "token": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"token\",\n        \"data\": \"{{local.4k4ff1x9fs.payload.output.token}}\",\n        \"tooltip\": \"{{local.4k4ff1x9fs.payload.output.token}}\",\n        \"children\": [\n          {\n            \"text\": \"token\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "client": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"userAgent\",\n        \"data\": \"{{global.userAgent}}\",\n        \"tooltip\": \"{{global.userAgent}}\",\n        \"children\": [\n          {\n            \"text\": \"userAgent\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1080,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "6kicab9hzs",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 1200,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "jztudv69z5",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "HTTP",
+            "status": "configured",
+            "idUnique": "p7sypthr7i",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"output\",\n        \"data\": \"{{local.fg6veqq5ej.payload.output}}\",\n        \"tooltip\": \"{{local.fg6veqq5ej.payload.output}}\",\n        \"children\": [\n          {\n            \"text\": \"output\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1350,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "3su73xhlkg",
+            "nodeType": "CONNECTION",
+            "connectionId": "867ed4363b2bc21c860085ad2baa817d",
+            "connectorId": "httpConnector",
+            "name": "Http",
+            "label": "HTTP",
+            "status": "configured",
+            "capabilityName": "customHTMLTemplate",
+            "type": "trigger",
+            "properties": {
+              "customHTML": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"<div>   <p>UI - User Education & inital guidence placeholder</p><div id=\\\"iProov-wrapper\\\"></div>  <form  id=\\\"iProovForm\\\"  method=\\\"post\\\"  >  <input type=\\\"hidden\\\" name=\\\"iProovToken\\\" id=\\\"iProovToken\\\"/>  <input type=\\\"hidden\\\" name=\\\"iProovEvent\\\" id=\\\"iProovEvent\\\"/>  <input type=\\\"hidden\\\" name=\\\"iProovClientReason\\\" id=\\\"iProovClientReason\\\"/>    <button    type=\\\"hidden\\\"    data-skcomponent=\\\"skbutton\\\"    data-skbuttontype=\\\"form-submit\\\"    class=\\\"hidden-button\\\"    data-skbuttonvalue=\\\"submit\\\"    data-skform=\\\"iProovForm\\\"    id=\\\"iProovSubmitBtn\\\"  ></button></form></div>\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  },\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "customCSS": {
+                "value": ".hidden-button{\n  display: none;\n}"
+              },
+              "customScript": {
+                "value": "import(\"{{SDK URL}}\").then(function(module) {\n  const iProovMe = document.createElement(\"iproov-me\")\n  iProovMe.setAttribute(\"token\", \"{{local.4k4ff1x9fs.payload.output.token}}\")\n  iProovMe.setAttribute(\"base_url\", \"{{BASE URL}})\n  document.getElementById(\"iProov-wrapper\").appendChild(iProovMe)\n\n\n  iProovMe.addEventListener(\"ready\", iProovEvent)\n  iProovMe.addEventListener(\"started\", iProovEvent)\n  iProovMe.addEventListener(\"canceled\", iProovEvent)\n  iProovMe.addEventListener(\"streaming\", iProovEvent)\n  iProovMe.addEventListener(\"streamed\", iProovEvent)\n  iProovMe.addEventListener(\"progress\", iProovEvent)\n  iProovMe.addEventListener(\"passed\", iProovEvent)\n  iProovMe.addEventListener(\"failed\", iProovEvent)\n  iProovMe.addEventListener(\"error\", iProovEvent)\n  iProovMe.addEventListener(\"unsupported\", iProovEvent)\n  iProovMe.addEventListener(\"permission\", iProovEvent)\n  iProovMe.addEventListener(\"permission_denied\", iProovEvent)\n  \n  function iProovEvent(event) {\n    switch (event.type) {\n      case \"canceled\":\n      case \"error\":\n      case \"unsupported\":\n      case \"permission\":\n      case \"permission_denied\":\n      case \"passed\":\n      case \"failed\":\n        console.warn(\"iProov \" + event.type + \" - \" + event.detail.reason)\n        callback('{{local.4k4ff1x9fs.payload.output.token}}',event.type,event.detail.reason)\n        break\n      case \"progress\":\n        console.info(event.detail.message + \" (\" + event.detail.progress + \"%)\")\n        break\n      default:\n        console.log(\"iProov \" + event.type)\n    }\n  }\n\n\n});\n\n\nfunction callback(token, eventType, reason){\n\n  document.getElementById('iProovToken').value = token;\n  document.getElementById('iProovEvent').value = eventType;\n  document.getElementById('iProovClientReason').value = reason;\n\n  document.getElementById('iProovSubmitBtn').click();\n  const iProovSubmitBtn = document.getElementById(\n    'iProovSubmitBtn'\n  );\n  if (iProovSubmitBtn) {\n    iProovSubmitBtn.addEventListener('click', true);\n  }\n}\n\n"
+              },
+              "outputSchema": {
+                "value": "{\n\t\"type\": \"object\",\n\t\"properties\": {\n\t\t\"buttonValue\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"buttonValue\"\n\t\t},\n\t\t\"iProovToken\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"iProovToken\"\n\t\t}\n\t\t\"iProovEvent\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"iProovEvent\"\n\t\t}\n\t\t\"iProovClientReason\": {\n\t\t\t\"type\": \"string\",\n\t\t\t\"propertyName\": \"iProovClientReason\"\n\t\t}\n\t}\n}\n\n"
+              },
+              "formFieldsList": {
+                "value": [
+                  {
+                    "propertyName": "iProovToken",
+                    "preferredControlType": "textField",
+                    "preferredDataType": "string",
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]",
+                    "hashedVisibility": false,
+                    "displayName": "iProovToken"
+                  },
+                  {
+                    "propertyName": "iProovEvent",
+                    "preferredControlType": "textField",
+                    "preferredDataType": "string",
+                    "value": "",
+                    "hashedVisibility": false,
+                    "displayName": "iProovEvent"
+                  },
+                  {
+                    "propertyName": "iProovClientReason",
+                    "preferredControlType": "textField",
+                    "preferredDataType": "string",
+                    "value": "",
+                    "hashedVisibility": false,
+                    "displayName": "iProovClientReason"
+                  },
+                  {
+                    "propertyName": "buttonValue",
+                    "preferredControlType": "textField",
+                    "preferredDataType": "string",
+                    "value": "",
+                    "hashedVisibility": false
+                  }
+                ]
+              },
+              "nodeTitle": {
+                "value": "Render SDK"
+              }
+            }
+          },
+          "position": {
+            "x": 540,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "wi63zv2bpb",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 690,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "bpz0qm7i9i",
+            "nodeType": "CONNECTION",
+            "connectionId": "de650ca45593b82c49064ead10b9fe17",
+            "connectorId": "functionsConnector",
+            "name": "Functions",
+            "label": "Functions",
+            "status": "configured",
+            "capabilityName": "AEqualsMultipleB",
+            "type": "trigger",
+            "properties": {
+              "leftValueA": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"http.svg\",\n        \"url\": \"iProovEvent\",\n        \"data\": \"{{local.3su73xhlkg.payload.output.iProovEvent}}\",\n        \"tooltip\": \"{{local.3su73xhlkg.payload.output.iProovEvent}}\",\n        \"children\": [\n          {\n            \"text\": \"iProovEvent\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "rightValueMultiple": {
+                "value": [
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"passed\"\n      }\n    ]\n  }\n]",
+                    "id": "rhp9e8n0ih"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"failed\"\n      }\n    ]\n  }\n]",
+                    "id": "0uj9xhjbcv"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"error\"\n      }\n    ]\n  }\n]",
+                    "id": "ywqilx4gx1"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 810,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "pkt9ljt6lg",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 930,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ponwvt7bcg",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 930,
+            "y": 420
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "m1auf4diab",
+            "nodeType": "CONNECTION",
+            "connectionId": "6d8f6f706c45fd459a86b3f092602544",
+            "connectorId": "errorConnector",
+            "name": "Error Customize",
+            "label": "Error Customize",
+            "status": "configured",
+            "idUnique": "6issbchw0h",
+            "capabilityName": "customErrorMessage",
+            "type": "action",
+            "properties": {
+              "errorMessage": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Error\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1080,
+            "y": 420
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "rofdob06em",
+            "source": "wi63zv2bpb",
+            "target": "bpz0qm7i9i"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "5lkq27s7tf",
+            "source": "pkt9ljt6lg",
+            "target": "fg6veqq5ej"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "9wyav0du8r",
+            "source": "ponwvt7bcg",
+            "target": "m1auf4diab"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "iaf6g9ckpl",
+            "source": "bpz0qm7i9i",
+            "target": "pkt9ljt6lg",
+            "multiValueSourceId": "rhp9e8n0ih"
+          },
+          "position": {
+            "x": 64,
+            "y": 52
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "d82rhryufo",
+            "source": "fg6veqq5ej",
+            "target": "6kicab9hzs"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "wx7xcvcdu6",
+            "source": "1up2cvm9l8",
+            "target": "3su73xhlkg"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "gr75se3o9y",
+            "source": "3su73xhlkg",
+            "target": "wi63zv2bpb"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "1f79u3gxnm",
+            "source": "4k4ff1x9fs",
+            "target": "1up2cvm9l8"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "j11ual4x0f",
+            "source": "bpz0qm7i9i",
+            "target": "ponwvt7bcg",
+            "multiValueSourceId": "ywqilx4gx1"
+          },
+          "position": {
+            "x": 64,
+            "y": 132
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "t2f54q2dwj",
+            "source": "6kicab9hzs",
+            "target": "jztudv69z5"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "avcsgfzwd6",
+            "source": "bpz0qm7i9i",
+            "target": "ponwvt7bcg",
+            "multiValueSourceId": "0uj9xhjbcv"
+          },
+          "position": {
+            "x": 64,
+            "y": 92
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        }
+      ]
+    },
+    "data": {},
+    "zoomingEnabled": true,
+    "userZoomingEnabled": true,
+    "zoom": 1,
+    "minZoom": 1e-50,
+    "maxZoom": 1e+50,
+    "panningEnabled": true,
+    "userPanningEnabled": true,
+    "pan": {
+      "x": 0,
+      "y": 0
+    },
+    "boxSelectionEnabled": true,
+    "renderer": {
+      "name": "null"
+    }
+  },
+  "flowColor": "#F9A11B",
+  "savedDate": 1719943292848,
+  "variables": [],
+  "connections": []
+}
