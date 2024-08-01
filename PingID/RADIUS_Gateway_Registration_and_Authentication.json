@@ -1,7 +1,7 @@
 {
   "flows": [
     {
-      "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db",
+      "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e",
       "authTokenExpireIds": [],
       "connectorIds": [
         "functionsConnector",
@@ -13,9 +13,9 @@
         "pingOneMfaConnector",
         "flowConnector"
       ],
-      "createdDate": 1699884073887,
-      "currentVersion": 2,
-      "customerId": "389ebd95c0ba4d084d76122bafc9d7d1",
+      "createdDate": 1722410888086,
+      "currentVersion": 1,
+      "customerId": "62ecc37f7aef56ed956cc32902f432cb",
       "description": "Imported on Mon Aug 28 2023 11:07:04 GMT+0000 (Coordinated Universal Time)",
       "flowStatus": "enabled",
       "inputSchemaCompiled": {
@@ -54,7 +54,7 @@
       "isInputSchemaSaved": true,
       "isOutputSchemaSaved": false,
       "name": "RADIUS Gateway - Registration and Authentication",
-      "publishedVersion": 2,
+      "publishedVersion": 1,
       "settings": {
         "csp": "worker-src 'self' blob:; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://devsdk.singularkey.com http://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';",
         "intermediateLoadingScreenCSS": "",
@@ -63,10 +63,9 @@
         "scrubSensitiveInfo": false,
         "useBetaAlgorithm": true
       },
-      "timeouts": "null",
-      "updatedDate": 1699884147469,
-      "flowId": "ba148cad6e98b0937f1f84a9aed8ae18",
-      "versionId": 2,
+      "updatedDate": 1722410888164,
+      "flowId": "21cd56f270e5761562ee597cec18f950",
+      "versionId": 1,
       "graphData": {
         "elements": {
           "nodes": [
@@ -411,9 +410,9 @@
               "data": {
                 "id": "307lm36hwb",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -654,7 +653,7 @@
                     ]
                   },
                   "code": {
-                    "value": "// Write your code here\n// Supported language: Javascript \nmodule.exports = a = async ({params}) => {\n\tconst devices =  params.userDevices;\n\tdevices.map(device =>{\n\t    return device.nickname;\n    })\n\n    const charLimit = 253;\n    var newLine ;\n    switch(params.newLineChar){\n        case \"\\\\n\" : newLine = \"\\n\";\n        break;\n        case \"\\\\r\\n\" : newLine = \"\\r\\n\";\n        break;\n        case \"<br>\" : newLine = \"<br>\";\n        break;\n        default : newLine = \" \";\n        \n    }\n\n\n    // Create a string of devices for the user to select from.\n    // Appropriate message is shown if the user selected wrong device/input.\n    var message ;\n    params.wrongDevice ? message = \"Authentication failed. Try again with a different device:\" + newLine : message = \"Select the authenticating device you want to use:\" + newLine ;\n    var length = 0;\n    for (var i = 0 ; i < devices.length ; i++){\n        message += i + 1 + \". \" + devices[i].nickname + newLine;\n        length += devices[i].nickname.length;\n    }\n\n\n\n    // Create a message for the user to select an authentication device from a list\n    // If the message is larger than 253 characters, apply a truncating algorithm.\n    if (message.length <= charLimit) {\n        return {'message': message}\n    } else {\n        var truncatedMessage = getTruncatedMessage(message, devices, charLimit, length);\n        return {'message': truncatedMessage} \n    }\n\n\n    /* \n        Function to truncate the device list message in case it exceeds 253 characters, to match the RADIUS Reply-Message limit.\n        The algorithm will truncate the device nicknames to a prefix ending with \"..\". \n        Here is an example to explain the change (it does not reach the 253 limit, but helps visualize the modified text):\n        \n        The function will modify the following device list message input:\n        \"Select the authenticating device you want to use:\n        1. My email device \n        2. My mobile app device \n        3. My SMS device\"\n\n        The output of the function will be:\n        \"Select the authenticating device you want to use: \n        1. My email.. \n        2. My mobil.. \n        3. My SMS d..\"\n    */\n    function getTruncatedMessage(originalMessage, devices, charLimit, sumOfNicknames) {\n        var totalDevices = devices.length;\n        var fixedSize;\n        var truncatedMessage;\n        params.wrongDevice ? fixedSize = (originalMessage.length + \"Authentication failed. Try again with a different device:\".length) - sumOfNicknames : fixedSize = originalMessage.length - sumOfNicknames;\n        var availableLengthForNickNames = charLimit - fixedSize;\n        var availableLengthForNickName = availableLengthForNickNames / totalDevices;\n        var totalRemainder = availableLengthForNickNames % totalDevices;\n        params.wrongDevice ? truncatedMessage = \"Authentication failed. Try again with a different device:\" + newLine : truncatedMessage = \"Select the authenticating device you want to use:\" + newLine ;\n        var i = 1;\n\n        for (const device of devices) {\n            var nickname = device.nickname;\n            var truncatedNickName = getTruncatedNickName(nickname, totalRemainder, availableLengthForNickName);\n            truncatedMessage += i + \". \" + truncatedNickName + newLine ;\n            \n            if(nickname != null && nickname.length > availableLengthForNickNames && totalRemainder > 0) {\n                totalRemainder = totalRemainder - 1;\n            }\n            i++;\n        }\n        return truncatedMessage;\n    }\n\n    function getTruncatedNickName(nickname, totalRemainder, availableLengthForNickName) {\n        if (totalRemainder > 0) {\n            availableLengthForNickName = availableLengthForNickName + 1;\n        }\n\n        if (nickname == null || nickname.length <= availableLengthForNickName) {\n            return nickname;\n        }\n\n        return nickname.substring(0, availableLengthForNickName - 2) + \"..\";\n    }\n\n}"
+                    "value": "// Write your code here\n// Supported language: Javascript \nmodule.exports = a = async ({params}) => {\n\tconst devices =  params.userDevices;\n\tconst devicesWithNickname = devices.filter(device => 'nickname' in device);\n\n    const charLimit = 253;\n    var newLine ;\n    switch(params.newLineChar){\n        case \"\\\\n\" : newLine = \"\\n\";\n        break;\n        case \"\\\\r\\n\" : newLine = \"\\r\\n\";\n        break;\n        case \"<br>\" : newLine = \"<br>\";\n        break;\n        default : newLine = \" \";\n        \n    }\n\n\n    // Create a string of devices for the user to select from.\n    // Appropriate message is shown if the user selected wrong device/input.\n    var message ;\n    params.wrongDevice ? message = \"Authentication failed. Try again with a different device:\" + newLine : message = \"Select the authenticating device you want to use:\" + newLine ;\n    var length = 0;\n    for (var i = 0 ; i < devicesWithNickname.length ; i++){\n        message += i + 1 + \". \" + devicesWithNickname[i].nickname + newLine;\n        length += devicesWithNickname[i].nickname.length;\n    }\n\n\n\n    // Create a message for the user to select an authentication device from a list\n    // If the message is larger than 253 characters, apply a truncating algorithm.\n    if (message.length <= charLimit) {\n        return {'message': message}\n    } else {\n        var truncatedMessage = getTruncatedMessage(message, devicesWithNickname, charLimit, length);\n        return {'message': truncatedMessage} \n    }\n\n\n    /* \n        Function to truncate the device list message in case it exceeds 253 characters, to match the RADIUS Reply-Message limit.\n        The algorithm will truncate the device nicknames to a prefix ending with \"..\". \n        Here is an example to explain the change (it does not reach the 253 limit, but helps visualize the modified text):\n        \n        The function will modify the following device list message input:\n        \"Select the authenticating device you want to use:\n        1. My email device \n        2. My mobile app device \n        3. My SMS device\"\n\n        The output of the function will be:\n        \"Select the authenticating device you want to use: \n        1. My email.. \n        2. My mobil.. \n        3. My SMS d..\"\n    */\n    function getTruncatedMessage(originalMessage, devices, charLimit, sumOfNicknames) {\n        var totalDevices = devices.length;\n        var fixedSize;\n        var truncatedMessage;\n        params.wrongDevice ? fixedSize = (originalMessage.length + \"Authentication failed. Try again with a different device:\".length) - sumOfNicknames : fixedSize = originalMessage.length - sumOfNicknames;\n        var availableLengthForNickNames = charLimit - fixedSize;\n        var availableLengthForNickName = availableLengthForNickNames / totalDevices;\n        var totalRemainder = availableLengthForNickNames % totalDevices;\n        params.wrongDevice ? truncatedMessage = \"Authentication failed. Try again with a different device:\" + newLine : truncatedMessage = \"Select the authenticating device you want to use:\" + newLine ;\n        var i = 1;\n\n        for (const device of devices) {\n            var nickname = device.nickname;\n            var truncatedNickName = getTruncatedNickName(nickname, totalRemainder, availableLengthForNickName);\n            truncatedMessage += i + \". \" + truncatedNickName + newLine ;\n            \n            if(nickname != null && nickname.length > availableLengthForNickNames && totalRemainder > 0) {\n                totalRemainder = totalRemainder - 1;\n            }\n            i++;\n        }\n        return truncatedMessage;\n    }\n\n    function getTruncatedNickName(nickname, totalRemainder, availableLengthForNickName) {\n        if (totalRemainder > 0) {\n            availableLengthForNickName = availableLengthForNickName + 1;\n        }\n\n        if (nickname == null || nickname.length <= availableLengthForNickName) {\n            return nickname;\n        }\n\n        return nickname.substring(0, availableLengthForNickName - 2) + \"..\";\n    }\n\n}"
                   },
                   "outputSchema": {
                     "value": "{\n\t\"output\": {\n\t\t\"type\": \"object\",\n\t\t\"properties\": {\n\t\t\t\"message\": {\n\t\t\t\t\"type\": \"string\"\n\t\t\t}\n\t\t}\n\t}\n}"
@@ -777,7 +776,7 @@
                     ]
                   },
                   "code": {
-                    "value": "// Write your code here\n// Supported language: Javascript \nmodule.exports = a = async ({params}) => {\n\tconst devices =  params.userDevices;\n\tdevices.map(device =>{\n\t\treturn device.id;\n\t} )\n\n\tvar index = params.text;\n\treturn {'deviceId': devices[index - 1].id}\n\n}"
+                    "value": "// Write your code here\n// Supported language: Javascript \nmodule.exports = a = async ({params}) => {\n\tconst devices =  params.userDevices;\n\tconst devicesWithNickname = devices.filter(device => 'nickname' in device);\n\n\tvar index = params.text;\n\treturn {'deviceId': devicesWithNickname[index - 1].id}\n\n}"
                   },
                   "outputSchema": {
                     "value": "{\n\t\"output\": {\n\t\t\"type\": \"object\",\n\t\t\"properties\": {\n\t\t\t\"deviceId\": {\n\t\t\t\t\"type\": \"string\"\n\t\t\t}\n\t\t}\n\t}\n}"
@@ -906,9 +905,9 @@
               "data": {
                 "id": "nxksp01d3d",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -1026,9 +1025,9 @@
               "data": {
                 "id": "id687dshdt",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -1059,9 +1058,9 @@
               "data": {
                 "id": "mttdnn6t1l",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -1339,9 +1338,9 @@
               "data": {
                 "id": "3cez1rtb0g",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "createDeviceAuthenticationPingID",
@@ -1375,9 +1374,9 @@
               "data": {
                 "id": "yzgln4txae",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "deviceSelectDeviceAuthentication",
@@ -1450,9 +1449,9 @@
               "data": {
                 "id": "us5gfw4p0r",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -1480,9 +1479,9 @@
               "data": {
                 "id": "us9866cmkw",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -1532,9 +1531,9 @@
               "data": {
                 "id": "1if9dtwtyz",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -1773,9 +1772,9 @@
               "data": {
                 "id": "dnozt1ssem",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -1859,9 +1858,9 @@
               "data": {
                 "id": "aw0bwo2z67",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "readDeviceAuthentication",
@@ -2002,9 +2001,9 @@
               "data": {
                 "id": "a4456e6pco",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -2083,9 +2082,9 @@
               "data": {
                 "id": "ce6hb6zszz",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -2113,9 +2112,9 @@
               "data": {
                 "id": "n5o0ernm39",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -2143,9 +2142,9 @@
               "data": {
                 "id": "fbdpl2h6e3",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -2173,9 +2172,9 @@
               "data": {
                 "id": "kgldd96fx8",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "validateOtpDeviceAuthentication",
@@ -2487,9 +2486,9 @@
               "data": {
                 "id": "v2a5ie9go0",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -2590,9 +2589,9 @@
               "data": {
                 "id": "ftrok8q5ep",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -2620,9 +2619,9 @@
               "data": {
                 "id": "w7gaqagwiz",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -2671,9 +2670,9 @@
               "data": {
                 "id": "36v26s6r35",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -4784,9 +4783,9 @@
               "data": {
                 "id": "crhdxnroen",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -4886,9 +4885,9 @@
               "data": {
                 "id": "d9gofbgg2h",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -4938,9 +4937,9 @@
               "data": {
                 "id": "xai5a2xn1z",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -4969,9 +4968,9 @@
               "data": {
                 "id": "fupwqhcwqk",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -5000,9 +4999,9 @@
               "data": {
                 "id": "8n49hr1o8f",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -5034,9 +5033,9 @@
               "data": {
                 "id": "c1rupzz89t",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -5065,9 +5064,9 @@
               "data": {
                 "id": "k5859mlqqw",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -5099,9 +5098,9 @@
               "data": {
                 "id": "sfsxen9y1r",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -5275,7 +5274,7 @@
                     "value": "#000000"
                   },
                   "annotation": {
-                    "value": "PingOne RADIUS Gateway - Registration and Authentication Flow                                                                                                                                                                                                  Created by: Ping Identity                                                           Version: 1.1                                                                           Release Date: November 13, 2023                                    Documentation: https://support.pingidentity.com/s/marketplace-integration/a7iDo0000004OSLIA2/radius-gateway-registration-and-authentication"
+                    "value": "PingOne RADIUS Gateway - Registration and Authentication Flow                                                                                                                                                                                                  Created by: Ping Identity                                                           Version: 1.2                                                                           Release Date: July 30, 2024                                    Documentation: https://support.pingidentity.com/s/marketplace-integration/a7iDo0000004OSLIA2/radius-gateway-registration-and-authentication"
                   },
                   "width": {
                     "value": 600
@@ -5321,9 +5320,9 @@
               "data": {
                 "id": "g8d6mkzdwa",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "readAllDevicesPingID",
@@ -5453,9 +5452,9 @@
               "data": {
                 "id": "yl2ro0g85t",
                 "nodeType": "CONNECTION",
-                "connectionId": "a10bf39a735ad639086c20f764762182",
+                "connectionId": "33329a264e268ab31fb19637debf1ea3",
                 "connectorId": "flowConnector",
-                "name": "Flow [2022-11-17]",
+                "name": "Flow Conductor",
                 "label": "Flow Conductor",
                 "status": "configured",
                 "capabilityName": "startUiSubFlow",
@@ -5464,7 +5463,7 @@
                   "subFlowId": {
                     "value": {
                       "label": "RADIUS Gateway - Registration subflow",
-                      "value": "c903ef246927dc83b3b95b3c578eb1bc"
+                      "value": "f97f0b55177b3f89e1c624e11eac5d30"
                     }
                   },
                   "pingIdUserId": {
@@ -5573,9 +5572,9 @@
               "data": {
                 "id": "ry7bc83qej",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingOne MFA",
                 "status": "configured",
                 "capabilityName": "evalPolicyPingID",
@@ -5706,9 +5705,9 @@
               "data": {
                 "id": "42cs5jlqwa",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -5814,9 +5813,9 @@
               "data": {
                 "id": "gy0viru9oo",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -5862,9 +5861,9 @@
               "data": {
                 "id": "3tr89m87qy",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -8150,11 +8149,11 @@
         }
       ],
       "flowColor": "#ff661c",
-      "savedDate": 1699884072519,
+      "savedDate": 1722410887848,
       "variables": [
         {
           "context": "flowInstance",
-          "createdDate": 1672402978229,
+          "createdDate": 1677415050293,
           "fields": {
             "type": "string",
             "displayName": "Specify the line separation character to use for RADIUS server challenge messages.",
@@ -8162,14 +8161,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "fa12ee29-85bf-4555-bd36-8216e5d498b8",
           "type": "property",
           "visibility": "private",
           "name": "NEWLINE_CHARACTER##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1670848590708,
+          "createdDate": 1677415050294,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -8177,14 +8177,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "52d6afb7-a8c6-464e-9119-602a7698842e",
           "type": "property",
           "visibility": "private",
           "name": "OTP##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1672402978225,
+          "createdDate": 1678358329902,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -8192,14 +8193,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "3181e3a1-ad8a-4304-a069-b722f6b27213",
           "type": "property",
           "visibility": "private",
           "name": "OTP_FALLBACK##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1672402978229,
+          "createdDate": 1678358329903,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -8207,28 +8209,30 @@
             "min": 0,
             "max": 2000
           },
+          "id": "26ff1525-7b3a-4abf-bb07-868e8a7122a4",
           "type": "property",
           "visibility": "private",
           "name": "SELECTED_DEVICE##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1672402978223,
+          "createdDate": 1677504784323,
           "fields": {
             "type": "string",
             "displayName": "",
             "min": 0,
             "max": 2000
           },
+          "id": "ddf329b3-471e-49fe-b547-d9888b292e18",
           "type": "property",
           "visibility": "private",
           "name": "STATUS##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1672402978229,
+          "createdDate": 1678358329905,
           "fields": {
             "type": "object",
             "displayName": "",
@@ -8236,14 +8240,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "0d06be71-c1b3-4fbf-b606-77ec49186f6c",
           "type": "property",
           "visibility": "private",
           "name": "USER_DEVICE_LIST##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1672402978229,
+          "createdDate": 1677415050294,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -8251,17 +8256,18 @@
             "min": 0,
             "max": 2000
           },
+          "id": "041a589c-a6a3-4788-9568-b1c0a084355f",
           "type": "property",
           "visibility": "private",
           "name": "WRONG_SELECTION_MESSAGE##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         }
       ],
       "connections": [],
-      "parentFlowId": "ba148cad6e98b0937f1f84a9aed8ae18"
+      "parentFlowId": "21cd56f270e5761562ee597cec18f950"
     },
     {
-      "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db",
+      "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e",
       "authTokenExpireIds": [],
       "connectorIds": [
         "functionsConnector",
@@ -8271,10 +8277,10 @@
         "annotationConnector",
         "nodeConnector"
       ],
-      "createdDate": 1699884022867,
+      "createdDate": 1722410887680,
       "currentVersion": 1,
-      "customerId": "389ebd95c0ba4d084d76122bafc9d7d1",
-      "description": "Imported on Mon Nov 13 2023 14:00:19 GMT+0000 (Coordinated Universal Time)",
+      "customerId": "62ecc37f7aef56ed956cc32902f432cb",
+      "description": "Imported on Wed Jul 31 2024 07:28:06 GMT+0000 (Coordinated Universal Time)",
       "flowStatus": "enabled",
       "inputSchemaCompiled": {
         "parameters": {
@@ -8314,9 +8320,8 @@
         "scrubSensitiveInfo": false,
         "useBetaAlgorithm": true
       },
-      "timeouts": "null",
-      "updatedDate": 1699884024906,
-      "flowId": "c903ef246927dc83b3b95b3c578eb1bc",
+      "updatedDate": 1722410887768,
+      "flowId": "f97f0b55177b3f89e1c624e11eac5d30",
       "versionId": 1,
       "graphData": {
         "elements": {
@@ -8438,9 +8443,9 @@
               "data": {
                 "id": "1nwpb03zdq",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "idUnique": "4w3xjse85i",
@@ -8990,9 +8995,9 @@
               "data": {
                 "id": "hydii20r3d",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "createDevicePingID",
@@ -9294,9 +9299,9 @@
               "data": {
                 "id": "wys0qi8j5k",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -9344,9 +9349,9 @@
               "data": {
                 "id": "dv1ylbkqjl",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -9397,9 +9402,9 @@
               "data": {
                 "id": "djk4iufb5v",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -9522,9 +9527,9 @@
               "data": {
                 "id": "gugwls2msb",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "createDevicePingID",
@@ -9681,9 +9686,9 @@
               "data": {
                 "id": "40fgi4wef2",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -9735,9 +9740,9 @@
               "data": {
                 "id": "hcdm84238g",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "activateDevice",
@@ -9930,9 +9935,9 @@
               "data": {
                 "id": "ahmrk18ct2",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -9981,9 +9986,9 @@
               "data": {
                 "id": "so1a6v0bgh",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -10060,9 +10065,9 @@
               "data": {
                 "id": "na7j4yd8a9",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "idUnique": "b3q51izfar",
@@ -10091,9 +10096,9 @@
               "data": {
                 "id": "zm7mtaxau6",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -10278,9 +10283,9 @@
               "data": {
                 "id": "2ld1ih0q31",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -10309,9 +10314,9 @@
               "data": {
                 "id": "0j5ic9fykz",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -10402,9 +10407,9 @@
               "data": {
                 "id": "fijn9go2u4",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -10475,9 +10480,9 @@
               "data": {
                 "id": "9jon606g1r",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -10506,9 +10511,9 @@
               "data": {
                 "id": "4pfw1835zx",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -10597,9 +10602,9 @@
               "data": {
                 "id": "5cypi05dpk",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "createDevicePingID",
@@ -10662,16 +10667,16 @@
               "data": {
                 "id": "oab5ekicx7",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
                 "type": "action",
                 "properties": {
                   "nodeInstanceId": {
-                    "value": "kbt1ujb2q1"
+                    "value": "6tyuhrauwa"
                   }
                 },
                 "idUnique": "r6e8wjj8ql"
@@ -10849,9 +10854,9 @@
               "data": {
                 "id": "r8pwdc171n",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -10958,9 +10963,9 @@
               "data": {
                 "id": "9s3sijy2t4",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -11093,9 +11098,9 @@
               "data": {
                 "id": "fu0rbxetyz",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -11248,9 +11253,9 @@
               "data": {
                 "id": "nztl5wt7cc",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -11478,9 +11483,9 @@
               "data": {
                 "id": "l33c4rkl57",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -11509,9 +11514,9 @@
               "data": {
                 "id": "z21ia444ar",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -11582,9 +11587,9 @@
               "data": {
                 "id": "5606uy1ytt",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -11633,9 +11638,9 @@
               "data": {
                 "id": "v8g491pztj",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -11664,9 +11669,9 @@
               "data": {
                 "id": "tavptp6b2w",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -11775,9 +11780,9 @@
               "data": {
                 "id": "o0ymlmv7b5",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "createDevicePingID",
@@ -11949,9 +11954,9 @@
               "data": {
                 "id": "hcgwm7k6kw",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -12122,9 +12127,9 @@
               "data": {
                 "id": "o64y4dlunr",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13016,9 +13021,9 @@
               "data": {
                 "id": "fenhshgqvp",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13117,9 +13122,9 @@
               "data": {
                 "id": "cionttooch",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13610,9 +13615,9 @@
               "data": {
                 "id": "xq379fiepv",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13722,9 +13727,9 @@
               "data": {
                 "id": "efh1rkfr7e",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13833,9 +13838,9 @@
               "data": {
                 "id": "ibs1a7s9br",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13961,9 +13966,9 @@
               "data": {
                 "id": "3x22q1x4lk",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Teleport",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -13992,9 +13997,9 @@
               "data": {
                 "id": "806hx6zp8z",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "readPairingKey",
@@ -14154,9 +14159,9 @@
               "data": {
                 "id": "a8kqaqd9wc",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -14224,9 +14229,9 @@
               "data": {
                 "id": "3iq6vou5ml",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14419,9 +14424,9 @@
               "data": {
                 "id": "6tyuhrauwa",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2022-10-27]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -14453,9 +14458,9 @@
               "data": {
                 "id": "zkqh33sg52",
                 "nodeType": "CONNECTION",
-                "connectionId": "86ab6fb5e6ec04080cb72ca50f93f6d5",
+                "connectionId": "12b22654d32104f7b7472716550763a2",
                 "connectorId": "pingOneMfaConnector",
-                "name": "PingID (new)",
+                "name": "PingID [2023-02-26]",
                 "label": "PingID",
                 "status": "configured",
                 "capabilityName": "updateUserMFAEnabled",
@@ -14555,9 +14560,9 @@
               "data": {
                 "id": "ztm9splbsn",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -14656,9 +14661,9 @@
               "data": {
                 "id": "z2uun5hvwq",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14686,9 +14691,9 @@
               "data": {
                 "id": "11pflwilcj",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14717,9 +14722,9 @@
               "data": {
                 "id": "lqp7yk28tx",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14748,9 +14753,9 @@
               "data": {
                 "id": "3sl8pz1tzy",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14779,9 +14784,9 @@
               "data": {
                 "id": "jqltnn3mvn",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14859,9 +14864,9 @@
               "data": {
                 "id": "14gu531w6u",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "startNode",
@@ -14907,9 +14912,9 @@
               "data": {
                 "id": "1dqq2ypamo",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -14937,9 +14942,9 @@
               "data": {
                 "id": "vnvt9px4p",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -15040,9 +15045,9 @@
               "data": {
                 "id": "jjeq2ua6d9",
                 "nodeType": "CONNECTION",
-                "connectionId": "3566e86a35c26e575396dcfb89a3dcc0",
+                "connectionId": "90dc2f3b9ffa42cac926b1ff96ec2747",
                 "connectorId": "nodeConnector",
-                "name": "Teleport",
+                "name": "Node [2023-02-26]",
                 "label": "Node [2023-02-26]",
                 "status": "configured",
                 "capabilityName": "goToNode",
@@ -18551,11 +18556,11 @@
         }
       ],
       "flowColor": "#E3F0FF",
-      "savedDate": 1699884020212,
+      "savedDate": 1722410887317,
       "variables": [
         {
           "context": "flowInstance",
-          "createdDate": 1672402978229,
+          "createdDate": 1677415050294,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -18563,14 +18568,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "041a589c-a6a3-4788-9568-b1c0a084355f",
           "type": "property",
           "visibility": "private",
           "name": "WRONG_SELECTION_MESSAGE##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1678006175036,
+          "createdDate": 1677415050293,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -18578,14 +18584,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "d29e9889-4167-4240-88ff-eba12da8d650",
           "type": "property",
           "visibility": "private",
           "name": "more methods for registration text##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1668669000685,
+          "createdDate": 1677415050294,
           "fields": {
             "type": "string",
             "displayName": "local device ID variable to manage the most current user device being used",
@@ -18593,14 +18600,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "598b91f3-95f1-4efd-9288-a1a0e338a99f",
           "type": "property",
           "visibility": "private",
           "name": "p1DeviceId##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         },
         {
           "context": "flowInstance",
-          "createdDate": 1670848590708,
+          "createdDate": 1677415050294,
           "fields": {
             "type": "string",
             "displayName": "",
@@ -18608,14 +18616,15 @@
             "min": 0,
             "max": 2000
           },
+          "id": "52d6afb7-a8c6-464e-9119-602a7698842e",
           "type": "property",
           "visibility": "private",
           "name": "OTP##SK##flowInstance",
-          "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db"
+          "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e"
         }
       ]
     }
   ],
-  "companyId": "3ffaeb94-4544-4c0a-8eb8-8062762700db",
-  "customerId": "389ebd95c0ba4d084d76122bafc9d7d1"
+  "companyId": "41815905-497b-45a1-91ff-078ffb93bd2e",
+  "customerId": "62ecc37f7aef56ed956cc32902f432cb"
 }
