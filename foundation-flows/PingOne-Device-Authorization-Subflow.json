@@ -305,6 +305,9 @@
               "applicationIdentifierIDForAppConsent": {
                 "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"applicationID\",\n        \"data\": \"{{global.parameters.applicationID}}\",\n        \"tooltip\": \"{{global.parameters.applicationID}}\",\n        \"children\": [\n          {\n            \"text\": \"applicationID\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
               },
+              "scopes": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingIdentity.svg\",\n        \"url\": \"scope\",\n        \"data\": \"{{local.potilz4eu5.payload.output.scope}}\",\n        \"tooltip\": \"{{local.potilz4eu5.payload.output.scope}}\",\n        \"children\": [\n          {\n            \"text\": \"scope\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
               "appConsentHtmlConfig": {
                 "properties": {
                   "customHTML": {
