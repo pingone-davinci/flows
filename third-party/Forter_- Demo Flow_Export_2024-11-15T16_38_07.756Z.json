@@ -1,0 +1,1241 @@
+{
+  "companyId": "0a361647-ffc8-453b-9a79-dce96e7861fe",
+  "authTokenExpireIds": [],
+  "connectorIds": [
+    "httpConnector",
+    "pingOneFormsConnector",
+    "pingOneSSOConnector",
+    "forterConnector",
+    "functionsConnector"
+  ],
+  "createdDate": 1731688639116,
+  "currentVersion": 6,
+  "customerId": "ea1d9ea9b2fadf65af69c03c9ae9ccd2",
+  "deployedDate": 1731688673066,
+  "description": "Cloned on Thu Aug 01 2024 21:33:11 GMT+0000 (Coordinated Universal Time). \nImported on Mon Jul 22 2024 17:10:20 GMT+0000 (Coordinated Universal Time)",
+  "flowStatus": "enabled",
+  "isOutputSchemaSaved": false,
+  "name": "Forter - Demo Flow",
+  "publishedVersion": 6,
+  "settings": {
+    "csp": "worker-src 'self' blob:; script-src 'self' https://cdn.jsdelivr.net https://code.jquery.com https://devsdk.singularkey.com http://cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval';",
+    "intermediateLoadingScreenCSS": "",
+    "intermediateLoadingScreenHTML": "",
+    "logLevel": 2
+  },
+  "timeouts": "null",
+  "updatedDate": 1731688673083,
+  "flowId": "8190de77d06959fd45ca04b159d32b12",
+  "versionId": 6,
+  "graphData": {
+    "elements": {
+      "nodes": [
+        {
+          "data": {
+            "id": "2rhno484x6",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 418.1351237395941,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "arr538m5zz",
+            "nodeType": "CONNECTION",
+            "connectionId": "481e952e6b11db8360587b8711620786",
+            "connectorId": "httpConnector",
+            "name": "HTTP",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"User Passed based on policy defined in Forter\"\n      }\n    ]\n  }\n]"
+              },
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"User Passed\"\n      }\n    ]\n  }\n]"
+              },
+              "backgroundColor": {
+                "value": "#7ed321ff"
+              },
+              "nodeTitle": {
+                "value": "User Passed"
+              },
+              "showContinueButton": {
+                "value": true
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 1380,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "x7vrzuaapn",
+            "nodeType": "CONNECTION",
+            "connectionId": "481e952e6b11db8360587b8711620786",
+            "connectorId": "httpConnector",
+            "name": "HTTP",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"User Blocked\"\n      }\n    ]\n  }\n]"
+              },
+              "backgroundColor": {
+                "value": "#fb9eabff"
+              },
+              "nodeTitle": {
+                "value": "User Blocked"
+              },
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"User blocked based on policy set in Forter\"\n      }\n    ]\n  }\n]"
+              },
+              "showContinueButton": {
+                "value": true
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 1380,
+            "y": 360
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0yqhg6tpp0",
+            "nodeType": "CONNECTION",
+            "connectionId": "8209285e0d2f3fc76bfd23fd10d45e6f",
+            "connectorId": "pingOneFormsConnector",
+            "name": "PingOne Forms",
+            "label": "PingOne Forms",
+            "status": "configured",
+            "capabilityName": "customForm",
+            "type": "action",
+            "properties": {
+              "formData": {
+                "value": [
+                  {
+                    "key": "user.username",
+                    "value": ""
+                  },
+                  {
+                    "key": "user.password",
+                    "value": ""
+                  }
+                ]
+              },
+              "form": {
+                "value": "64e467b8-7257-429d-b238-329a2facbf9d"
+              },
+              "nodeTitle": {
+                "value": "Sign On Form"
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 277,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "a78ard12f3",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 960,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "tua0tnqpjr",
+            "nodeType": "CONNECTION",
+            "connectionId": "06c0cdd10eda3d6841d26044edc39e89",
+            "connectorId": "pingOneSSOConnector",
+            "name": "PingOne - Test",
+            "label": "PingOne",
+            "status": "configured",
+            "capabilityName": "userLookup",
+            "type": "action",
+            "properties": {
+              "matchAttributes": {
+                "value": [
+                  "username"
+                ]
+              },
+              "userIdentifierForFindUser": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingone-forms.svg\",\n        \"url\": \"username\",\n        \"data\": \"{{local.0yqhg6tpp0.payload.output.formData.user.username}}\",\n        \"tooltip\": \"{{local.0yqhg6tpp0.payload.output.formData.user.username}}\",\n        \"children\": [\n          {\n            \"text\": \"username\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "useCustomSCIMFilter": {
+                "value": false
+              },
+              "matchAttribute": {
+                "value": "email"
+              },
+              "identifier": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"billjones1@example.com\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 559.2702474791881,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "vkokm9916r",
+            "nodeType": "EVAL",
+            "properties": {
+              "kgtc5hhsgt": {
+                "value": "allTriggersFalse"
+              }
+            }
+          },
+          "position": {
+            "x": 672.1783464708635,
+            "y": 236
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "kgtc5hhsgt",
+            "nodeType": "CONNECTION",
+            "connectionId": "481e952e6b11db8360587b8711620786",
+            "connectorId": "httpConnector",
+            "name": "HTTP",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"No Account Found\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "No Account Found"
+              },
+              "showContinueButton": {
+                "value": true
+              },
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Please select \\\"Submit\\\" to begin creating your account\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 840,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "g3h71hzpj2",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 960,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "30cfd3m43f",
+            "nodeType": "CONNECTION",
+            "connectionId": "06c0cdd10eda3d6841d26044edc39e89",
+            "connectorId": "pingOneSSOConnector",
+            "name": "PingOne - Test",
+            "label": "PingOne",
+            "status": "configured",
+            "capabilityName": "createUser",
+            "type": "action",
+            "properties": {
+              "additionalUserProperties": {
+                "value": []
+              },
+              "username": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingone-forms.svg\",\n        \"url\": \"username\",\n        \"data\": \"{{local.mntdh09qwk.payload.output.formData.user.username}}\",\n        \"tooltip\": \"{{local.mntdh09qwk.payload.output.formData.user.username}}\",\n        \"children\": [\n          {\n            \"text\": \"username\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "email": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"pingone-forms.svg\",\n        \"url\": \"email\",\n        \"data\": \"{{local.mntdh09qwk.payload.output.formData.user.email}}\",\n        \"tooltip\": \"{{local.mntdh09qwk.payload.output.formData.user.email}}\",\n        \"children\": [\n          {\n            \"text\": \"email\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 1950,
+            "y": 570
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "7bkloo72xd",
+            "nodeType": "CONNECTION",
+            "connectionId": "0fad6083d8197bee5cc95a833a518e92",
+            "connectorId": "forterConnector",
+            "name": "Forter",
+            "label": "Forter",
+            "status": "configured",
+            "idUnique": "ojbrxgtxw1",
+            "capabilityName": "signUpMin",
+            "type": "action",
+            "properties": {
+              "ipAddress": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"ip\",\n        \"data\": \"{{global.ip}}\",\n        \"tooltip\": \"{{global.ip}}\",\n        \"children\": [\n          {\n            \"text\": \"ip\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "userAgent": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"userAgent\",\n        \"data\": \"{{global.userAgent}}\",\n        \"tooltip\": \"{{global.userAgent}}\",\n        \"children\": [\n          {\n            \"text\": \"userAgent\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "eventTimestamp": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"eventTimestamp\",\n        \"data\": \"{{global.eventTimestamp}}\",\n        \"tooltip\": \"{{global.eventTimestamp}}\",\n        \"children\": [\n          {\n            \"text\": \"eventTimestamp\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 1380,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "rblj3uxy9t",
+            "nodeType": "CONNECTION",
+            "connectionId": "481e952e6b11db8360587b8711620786",
+            "connectorId": "httpConnector",
+            "name": "HTTP",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Account Successfully Created\"\n      }\n    ]\n  }\n]"
+              },
+              "nodeTitle": {
+                "value": "Account Created"
+              },
+              "backgroundColor": {
+                "value": "#7ed321ff"
+              },
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Account successfully created\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "isDisabled": false
+          },
+          "position": {
+            "x": 2220,
+            "y": 570
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "dqp3niuw59",
+            "nodeType": "CONNECTION",
+            "connectionId": "481e952e6b11db8360587b8711620786",
+            "connectorId": "httpConnector",
+            "name": "HTTP",
+            "label": "Http",
+            "status": "configured",
+            "capabilityName": "customHtmlMessage",
+            "type": "trigger",
+            "properties": {
+              "messageTitle": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"User Blocked\"\n      }\n    ]\n  }\n]"
+              },
+              "backgroundColor": {
+                "value": "#fb9eabff"
+              },
+              "nodeTitle": {
+                "value": "User Blocked"
+              },
+              "message": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"Your account could not be created\"\n      }\n    ]\n  }\n]"
+              }
+            },
+            "isDisabled": false,
+            "idUnique": "4j4flani0y"
+          },
+          "position": {
+            "x": 1950,
+            "y": 690
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "mntdh09qwk",
+            "nodeType": "CONNECTION",
+            "connectionId": "8209285e0d2f3fc76bfd23fd10d45e6f",
+            "connectorId": "pingOneFormsConnector",
+            "name": "PingOne Forms",
+            "label": "PingOne Forms",
+            "status": "configured",
+            "capabilityName": "customForm",
+            "type": "action",
+            "properties": {
+              "formData": {
+                "value": [
+                  {
+                    "key": "user.username",
+                    "value": ""
+                  },
+                  {
+                    "key": "user.password",
+                    "value": ""
+                  }
+                ]
+              },
+              "form": {
+                "value": "64e467b8-7257-429d-b238-329a2facbf9d"
+              },
+              "nodeTitle": {
+                "value": "Registration Form"
+              }
+            }
+          },
+          "position": {
+            "x": 1110,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zaad8gtbb8",
+            "nodeType": "CONNECTION",
+            "connectionId": "de650ca45593b82c49064ead10b9fe17",
+            "connectorId": "functionsConnector",
+            "name": "Functions",
+            "label": "Functions",
+            "status": "configured",
+            "capabilityName": "AEqualsMultipleB",
+            "type": "trigger",
+            "properties": {
+              "leftValueA": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"forter.svg\",\n        \"url\": \"forterDecision\",\n        \"data\": \"{{local.2rxoynuira.payload.output.forterDecision}}\",\n        \"tooltip\": \"{{local.2rxoynuira.payload.output.forterDecision}}\",\n        \"children\": [\n          {\n            \"text\": \"forterDecision\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "rightValueMultiple": {
+                "value": [
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"APPROVE\"\n      }\n    ]\n  }\n]",
+                    "id": "dwd518hcii"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"DECLINE\"\n      }\n    ]\n  }\n]",
+                    "id": "6jnkopp085"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 1110,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "5qprmul9wt",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1230,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "wmj3aspjtc",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1230,
+            "y": 360
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "8m1lebuy82",
+            "nodeType": "CONNECTION",
+            "connectionId": "de650ca45593b82c49064ead10b9fe17",
+            "connectorId": "functionsConnector",
+            "name": "Functions",
+            "label": "Functions (Sift)",
+            "status": "configured",
+            "capabilityName": "AEqualsMultipleB",
+            "type": "trigger",
+            "properties": {
+              "leftValueA": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"forter.svg\",\n        \"url\": \"forterDecision\",\n        \"data\": \"{{local.7bkloo72xd.payload.output.forterDecision}}\",\n        \"tooltip\": \"{{local.7bkloo72xd.payload.output.forterDecision}}\",\n        \"children\": [\n          {\n            \"text\": \"forterDecision\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "rightValueMultiple": {
+                "value": [
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"APPROVE\"\n      }\n    ]\n  }\n]",
+                    "id": "2udc445qvp"
+                  },
+                  {
+                    "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"DECLINE\"\n      }\n    ]\n  }\n]",
+                    "id": "5iq2fgbym5"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 1650,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ynuzfw9jsq",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1770,
+            "y": 690
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "3nx0ninzad",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 2070,
+            "y": 570
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "y0gyi8ynyf",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1800,
+            "y": 570
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "d7zz721b30",
+            "nodeType": "EVAL"
+          },
+          "position": {
+            "x": 1230,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "fohl4rhu9i",
+            "nodeType": "EVAL",
+            "label": "Evaluator"
+          },
+          "position": {
+            "x": 1500,
+            "y": 540
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "2rxoynuira",
+            "nodeType": "CONNECTION",
+            "connectionId": "0fad6083d8197bee5cc95a833a518e92",
+            "connectorId": "forterConnector",
+            "name": "Forter",
+            "label": "Forter",
+            "status": "configured",
+            "capabilityName": "loginMin",
+            "type": "action",
+            "properties": {
+              "ipAddress": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"ip\",\n        \"data\": \"{{global.ip}}\",\n        \"tooltip\": \"{{global.ip}}\",\n        \"children\": [\n          {\n            \"text\": \"ip\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "userAgent": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"userAgent\",\n        \"data\": \"{{global.userAgent}}\",\n        \"tooltip\": \"{{global.userAgent}}\",\n        \"children\": [\n          {\n            \"text\": \"userAgent\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              },
+              "eventTimestamp": {
+                "value": "[\n  {\n    \"children\": [\n      {\n        \"text\": \"\"\n      },\n      {\n        \"text\": \"\"\n      },\n      {\n        \"type\": \"link\",\n        \"src\": \"auth.svg\",\n        \"url\": \"eventTimestamp\",\n        \"data\": \"{{global.eventTimestamp}}\",\n        \"tooltip\": \"{{global.eventTimestamp}}\",\n        \"children\": [\n          {\n            \"text\": \"eventTimestamp\"\n          }\n        ]\n      },\n      {\n        \"text\": \"\"\n      }\n    ]\n  }\n]"
+              }
+            }
+          },
+          "position": {
+            "x": 840,
+            "y": 240
+          },
+          "group": "nodes",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": false,
+          "classes": ""
+        }
+      ],
+      "edges": [
+        {
+          "data": {
+            "id": "ib4lx97i9x",
+            "source": "wmj3aspjtc",
+            "target": "x7vrzuaapn"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "shtcreuhy5",
+            "source": "ynuzfw9jsq",
+            "target": "dqp3niuw59"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "mt34xl7j2t",
+            "source": "a78ard12f3",
+            "target": "zaad8gtbb8"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "703952hnlu",
+            "source": "2rxoynuira",
+            "target": "a78ard12f3"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "s948tiiud2",
+            "source": "7bkloo72xd",
+            "target": "fohl4rhu9i"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "gw2tqapvon",
+            "source": "0yqhg6tpp0",
+            "target": "2rhno484x6"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ar90c63ubl",
+            "source": "tua0tnqpjr",
+            "target": "vkokm9916r"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "0wraw2heo5",
+            "source": "g3h71hzpj2",
+            "target": "mntdh09qwk"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "4cza8308o4",
+            "source": "kgtc5hhsgt",
+            "target": "g3h71hzpj2"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "2zjek1lx5w",
+            "source": "vkokm9916r",
+            "target": "kgtc5hhsgt"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "6vknj4535v",
+            "source": "5qprmul9wt",
+            "target": "arr538m5zz"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ygz08i3rd5",
+            "source": "y0gyi8ynyf",
+            "target": "30cfd3m43f"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "yxufhtr1el",
+            "source": "mntdh09qwk",
+            "target": "d7zz721b30"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "des2j5qr25",
+            "source": "8m1lebuy82",
+            "target": "y0gyi8ynyf",
+            "multiValueSourceId": "2udc445qvp"
+          },
+          "position": {
+            "x": 64,
+            "y": 52
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "s48oujb4tc",
+            "source": "30cfd3m43f",
+            "target": "3nx0ninzad"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ef3hq9kg05",
+            "source": "d7zz721b30",
+            "target": "7bkloo72xd"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "51ztda6pp4",
+            "source": "zaad8gtbb8",
+            "target": "wmj3aspjtc",
+            "multiValueSourceId": "6jnkopp085"
+          },
+          "position": {
+            "x": 64,
+            "y": 92
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "98styuw6a5",
+            "source": "8m1lebuy82",
+            "target": "ynuzfw9jsq",
+            "multiValueSourceId": "5iq2fgbym5"
+          },
+          "position": {
+            "x": 64,
+            "y": 92
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "xtp0p6640f",
+            "source": "vkokm9916r",
+            "target": "2rxoynuira"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "ertoq2zkrs",
+            "source": "3nx0ninzad",
+            "target": "rblj3uxy9t"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "4spxoo0mvg",
+            "source": "zaad8gtbb8",
+            "target": "5qprmul9wt",
+            "multiValueSourceId": "dwd518hcii"
+          },
+          "position": {
+            "x": 64,
+            "y": 52
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "zy6lpdlczr",
+            "source": "fohl4rhu9i",
+            "target": "8m1lebuy82"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        },
+        {
+          "data": {
+            "id": "galc3ys3dv",
+            "source": "2rhno484x6",
+            "target": "tua0tnqpjr"
+          },
+          "position": {
+            "x": 0,
+            "y": 0
+          },
+          "group": "edges",
+          "removed": false,
+          "selected": false,
+          "selectable": true,
+          "locked": false,
+          "grabbable": true,
+          "pannable": true,
+          "classes": ""
+        }
+      ]
+    },
+    "data": {},
+    "zoomingEnabled": true,
+    "userZoomingEnabled": true,
+    "zoom": 1,
+    "minZoom": 1e-50,
+    "maxZoom": 1e+50,
+    "panningEnabled": true,
+    "userPanningEnabled": true,
+    "pan": {
+      "x": 0,
+      "y": 0
+    },
+    "boxSelectionEnabled": true,
+    "renderer": {
+      "name": "null"
+    }
+  },
+  "flowColor": "#E3F0FF",
+  "savedDate": 1731688638923,
+  "variables": [],
+  "connections": []
+}
