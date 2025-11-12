@@ -954,7 +954,6 @@
                   "VOICE",
                   "TOTP",
                   "MOBILE",
-                  "SECURITY_KEY",
                   "PLATFORM"
                 ]
               }
